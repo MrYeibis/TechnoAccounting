@@ -1,0 +1,56 @@
+.init{
+    width: 100%;
+    background-color: white;
+}
+
+.container{
+    height:100vh;
+    width:100%;
+}
+
+.main-text{
+    margin-top:40vh;
+    height:30vh;
+    width:40%;
+    margin-left: 5%;
+    line-height: 5.5vh;
+}
+
+.principal-text{
+    margin-left:5vw;
+    font-size: 4rem;
+    width:70%;
+    color: rgb(127, 81, 255);
+    font-weight: 500;
+}
+
+.secondary-text{
+    margin-top:4vh;
+    margin-left: 5.5vw;
+    width:70%;
+    font-weight: 100;
+    font-size: 1rem;
+    line-height: 3.5vh;
+}
+
+.rounded-square{
+    margin-top: 25vh;
+    margin-right: 2.5vw;
+    height:62.2vh;
+    width:39.5vw;
+    background-color: #7f51ff;  
+    border-radius: 7vh;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+}
+
+.main-image{
+    margin-top: 2vh;
+    margin-right: 0vh;
+}
+
+img{
+    height:58.5vh;
+    width:100%;
+}
+

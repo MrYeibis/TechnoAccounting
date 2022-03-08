@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "technoaccounting": {
+      "hosting": {
+        "TechnoAccounting": [
+          "technoaccounting"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "technoaccounting"
+  }
+}

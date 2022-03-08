@@ -1,0 +1,27 @@
+<div class="init">
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col-md-6 left">
+                    
+                </div>
+                <div class="col right">
+                    <p class="login text-center">Iniciar Sesión</p>
+                    <form [formGroup]="LoginForm" class="form-login">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                          <a routerLink="/landing">¿No tienes una cuenta? ¡Haz click aquí y Registrate!</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" (click)="login()">Iniciar</button>
+                        <button class="btn btn-danger btn-custom w-100" routerLink="/landing">Volver</button>  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+/* width */
+::-webkit-scrollbar {
+    width: 1.5vh;
+    scroll-behavior: smooth;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    scroll-behavior: smooth;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(127, 81, 255);
+    scroll-behavior: smooth;
+    border-radius: 15px
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(127, 81, 255);
+    scroll-behavior: smooth;
+    border-radius: 15px 
+  }
+
+body{margin: 0%;}
