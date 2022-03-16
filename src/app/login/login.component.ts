@@ -12,8 +12,8 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
 
   LoginForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]))
   })
 
   constructor(private authService: AuthService, private notifications: HotToastService, private router: Router) { }

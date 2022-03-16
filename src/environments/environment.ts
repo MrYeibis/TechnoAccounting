@@ -4,12 +4,12 @@
 
 export const environment = {
   firebase: {
-    projectId: 'technoaccounting',
-    appId: '1:465123792762:web:d32f105c6780bfb815a8c3',
-    storageBucket: 'technoaccounting.appspot.com',
-    apiKey: 'AIzaSyB5tEE0hjMZvKHNjbV_yTx3E3OpEaOx_fA',
-    authDomain: 'technoaccounting.firebaseapp.com',
-    messagingSenderId: '465123792762',
+    projectId: 'techno-accounting',
+    appId: '1:853048622605:web:a824d2e41174d7115c9f44',
+    storageBucket: 'techno-accounting.appspot.com',
+    apiKey: 'AIzaSyB8VI0qDEIwU7xyLdXM8Lv3LebvucvBfyI',
+    authDomain: 'techno-accounting.firebaseapp.com',
+    messagingSenderId: '853048622605',
   },
   production: false
 };

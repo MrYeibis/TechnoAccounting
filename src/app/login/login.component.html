@@ -1,27 +1,37 @@
 <div class="init">
     <div class="container">
         <div class="content">
-            <div class="row">
-                <div class="col-md-6 left">
-                    
-                </div>
-                <div class="col right">
-                    <p class="login text-center">Iniciar Sesión</p>
+          <div class="row">
+            <div class="col-md-6 left">
+              <div class="text-center">
+                <p class="title">Accede</p>
+                <p class="paragraph">Obten acceso a todas las funcionalidades de TechnoAccounting
+                  iniciando sesión en el formulario de la derecha. Si no tienes una cuenta puedes
+                  solicitar acceso en el formulario de registro.
+                </p>
+                <img src="../../assets/static/images/login/lock.png" alt="">
+              </div>
+            </div>
+            <div class="col right">
+              <p class="login text-center">Iniciar Sesión</p>
                     <form [formGroup]="LoginForm" class="form-login">
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email">
+                          <input type="email" class="form-control text-space" id="exampleInputEmail1" formControlName="email">
                         </div>
                         <div class="mb-3">
                           <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
-                          <a routerLink="/landing">¿No tienes una cuenta? ¡Haz click aquí y Registrate!</a>
+                          <input type="password" class="form-control text-space" id="exampleInputPassword1" formControlName="password">
+                          <a routerLink="/recuperar">¿Olvidaste tu contraseña?</a>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100" (click)="login()">Iniciar</button>
-                        <button class="btn btn-danger btn-custom w-100" routerLink="/landing">Volver</button>  
+                        <button type="submit" class="btn btn-login w-100 btn-borders" (click)="login()" [disabled]="!this.LoginForm.valid">Iniciar</button>
+                        <button class="btn btn-volver w-100 btn-borders" routerLink="/landing">Volver</button> 
+                        <div class="text-center">
+                          <a routerLink="/register">Solicita una cuenta aquí</a>
+                        </div>
                     </form>
-                </div>
             </div>
+          </div>
         </div>
     </div>
 </div>

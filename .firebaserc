@@ -1,14 +1,14 @@
 {
   "targets": {
-    "technoaccounting": {
+    "techno-accounting": {
       "hosting": {
         "TechnoAccounting": [
-          "technoaccounting"
+          "techno-accounting"
         ]
       }
     }
   },
   "projects": {
-    "default": "technoaccounting"
+    "default": "techno-accounting"
   }
 }

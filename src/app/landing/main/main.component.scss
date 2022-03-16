@@ -33,23 +33,27 @@
     line-height: 3.5vh;
 }
 
+
 .rounded-square{
-    margin-top: 25vh;
+    margin-top:25vh;
     margin-right: 2.5vw;
     height:62.2vh;
-    width:39.5vw;
+    width:39vw;
     background-color: #7f51ff;  
     border-radius: 7vh;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
+    box-shadow: 2px 2px 2px 2px rgba(109, 109, 109, 0.692);
+    -webkit-box-shadow: 2px 2px 5px rgba(109, 109, 109, 0.692);
+    -moz-box-shadow: 2px 2px 5px rgba(109, 109, 109, 0.692);
 }
 
 .main-image{
     margin-top: 2vh;
-    margin-right: 0vh;
 }
 
 img{
+    align-items: cen;
     height:58.5vh;
     width:100%;
 }

@@ -110,8 +110,8 @@
             "prerender": false,
             "ssr": false,
             "browserTarget": "TechnoAccounting:build:production",
-            "firebaseProject": "technoaccounting",
-            "firebaseHostingSite": "technoaccounting"
+            "firebaseProject": "techno-accounting",
+            "firebaseHostingSite": "techno-accounting"
           }
         }
       }
