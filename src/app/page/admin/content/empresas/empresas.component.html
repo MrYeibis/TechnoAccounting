@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="content">
+        <div class="box">
+            <div class="container">
+                <p class="title">Registrar Empresas</p>
+                <hr>
+                <div class="row">
+                    <div class="col-md-10">
+                        <form [formGroup]="new" (submit)="addBusiness()">
+                        <label class="form-label">Nombre de la Empresa</label>
+                        <input type="text" class="form-control" placeholder="Nombre Empresa" formControlName="name">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-success btn-agregar btn-borders" (click)="addBusiness()">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nombre de la Empresa</th>
+                <th scope="col">Código de la empresa</th>
+                <th scope="col">Editar / Eliminar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of data">
+                <td>{{item.name}}</td>
+                <td>{{item.id.id}}</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#edit" (click)="select(item.id.id, item.name)">Editar</button>
+                        <button type="button" class="btn btn-danger" (click)="deleteBusiness(item.id.id)">Eliminar</button>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+        <!-- Modal -->
+        <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Empresa: {{this.name}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="editarForm">
+                  <label class="form-label" >Nuevo Nombre:</label>
+                  <input type="text" class="form-control" placeholder="Nuevo Nombre Empresa" formControlName="name">
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="editar(this.id)" data-bs-dismiss="modal" [disabled]="!this.editarForm.valid">Guardar Cambios</button>
+              </div>
+            </div>
+          </div>
+        </div>

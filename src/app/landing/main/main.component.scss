@@ -9,15 +9,15 @@
 }
 
 .main-text{
-    margin-top:40vh;
+    margin-top:35vh;
     height:30vh;
     width:40%;
-    margin-left: 5%;
+    margin-left: 0%;
     line-height: 5.5vh;
 }
 
 .principal-text{
-    margin-left:5vw;
+    margin-left:10%;
     font-size: 4rem;
     width:70%;
     color: rgb(127, 81, 255);
@@ -26,7 +26,7 @@
 
 .secondary-text{
     margin-top:4vh;
-    margin-left: 5.5vw;
+    margin-left: 11%;
     width:70%;
     font-weight: 100;
     font-size: 1rem;
@@ -35,10 +35,10 @@
 
 
 .rounded-square{
-    margin-top:25vh;
+    margin-top:20vh;
     margin-right: 2.5vw;
-    height:62.2vh;
-    width:39vw;
+    height:76%;
+    width:100%;
     background-color: #7f51ff;  
     border-radius: 7vh;
     -moz-border-radius: 7px;
@@ -48,13 +48,9 @@
     -moz-box-shadow: 2px 2px 5px rgba(109, 109, 109, 0.692);
 }
 
-.main-image{
-    margin-top: 2vh;
-}
-
 img{
-    align-items: cen;
-    height:58.5vh;
-    width:100%;
+    margin-top:2%;
+    margin-left:2%;
+    height:95%;
+    width:96%;
 }
-

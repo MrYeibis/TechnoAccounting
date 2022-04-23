@@ -1,5 +1,5 @@
-
 .init{
+    position: absolute;
     margin:0%;
     padding: 0%;
     height:100vh;
@@ -8,11 +8,17 @@
 }
 
 .content{
-    position: absolute;
+    position: relative;
     margin-top: 10vh;
-    margin-left: 3.5%;
     height:80vh;
-    width:80vw;
+    width:100%;
+}
+
+.modal-title{
+    padding-top:2vh;
+    position: absolute;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 .left{
@@ -26,8 +32,8 @@
 }
 
 .title{
-    margin-top: 5vh;
-    margin-bottom: 1vh;
+    margin-top: 10vh;
+    margin-bottom: 3vh;
     color: white;
     font-size: 3rem ;
 }
@@ -59,7 +65,8 @@ img{
 }
 
 .login{
-    margin-top: 5vh;
+    margin-top: 10vh;
+    margin-bottom: 3vh;
     font-size: 3rem;
     font-weight: 400;
 }
@@ -70,7 +77,7 @@ img{
 }
 
 .text-space{
-    height:7vh;
+    height:45px;
     border-radius: 20px;
 }
 
@@ -93,3 +100,9 @@ img{
 a{
     text-decoration: none;
 }
+
+.modalLink{
+    color: rgb(26, 75, 255);
+    cursor: pointer;
+}
+

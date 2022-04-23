@@ -1,34 +1,62 @@
 <div class="init">
     <div class="container">
         <div class="content">
-            <div class="rounded-square">
-                <div class="into">
-                    <form>
+          <div class="row">
+            <div class="col-md-6 left">
+              <div class="text-center">
+                <p class="title">Registrate</p>
+                <p class="paragraph">Desbloquea todas las funcionalidades de TechnoAccounting
+                  disponibles para tu compañia registrandote en el formulario de la derecha.
+                </p>
+                <img src="../../assets/static/images/register/" alt="">
+              </div>
+            </div>
+            <div class="col right">
+              <p class="login text-center">Registro</p>
+                    <form [formGroup]="RegisterForm" class="form-login" >
                         <div class="row">
-                            <div class="col-md-6 left">
+                            <div class="mb-3">
+                                <label class="form-label">Correo Electronico</label>
+                                <input type="email" class="form-control text-space" formControlName="email">
+                            </div>  
+                            <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Nombre</label>
-                                    <input type="text" class="form-control text-space">
+                                    <input type="text" class="form-control text-space" formControlName="name">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Tipo de Documento</label>
-                                    <select2 class="select2-custom" [data]="Select2Data"></select2>
+                                    <select2 type="text" class="form-control text-space" [data]="Select2Data" formControlName="tipDocu"></select2>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control text-space" formControlName="password">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
                                     <label class="form-label">Apellido</label>
-                                    <input type="text" class="form-control text-space">
+                                    <input type="text" class="form-control text-space" formControlName="surname">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Número de documento</label>
-                                    <input class="form-control text-space">
+                                    <label class="form-label">Número de Documento</label>
+                                    <input type="text" class="form-control text-space" formControlName="numDocu">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Confirmar Contraseña</label>
+                                    <input type="password" class="form-control text-space" formControlName="confirmPassword">
                                 </div>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Código de Empresa</label>
+                            <input type="text" class="form-control text-space" formControlName="codeE">
+                        </div>
+                        <button type="submit" class="btn btn-login w-100 btn-borders" [disabled]="!this.RegisterForm.valid" (click)="register()">Registrar</button>
+                        <button type="submit" class="btn btn-volver w-100 btn-borders" routerLink="/landing">Volver</button>
                     </form>
-                </div>
             </div>
+          </div>
         </div>
     </div>
 </div>

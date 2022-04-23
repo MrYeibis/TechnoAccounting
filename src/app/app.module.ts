@@ -24,7 +24,21 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-import { RecuperarComponent } from './login/recuperar/recuperar.component';
+import { AdminComponent } from './page/admin/admin.component';
+import { EmpresasComponent } from './page/admin/content/empresas/empresas.component';
+import { NavbarAdminComponent } from './page/admin/content/navbar-admin/navbar-admin.component';
+import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { MainDashboardComponent } from './page/dashboard/content/main-dashboard/main-dashboard.component';
+import { VerificateComponent } from './verificate/verificate.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import { ProfileComponent } from './page/dashboard/content/profile/profile.component';
+import { PERSISTENCE } from '@angular/fire/compat/auth';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +50,13 @@ import { RecuperarComponent } from './login/recuperar/recuperar.component';
     SecondaryComponent,
     LoginComponent,
     RegisterComponent,
-    RecuperarComponent
+    AdminComponent,
+    EmpresasComponent,
+    NavbarAdminComponent,
+    DashboardComponent,
+    MainDashboardComponent,
+    VerificateComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -54,10 +74,17 @@ import { RecuperarComponent } from './login/recuperar/recuperar.component';
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
     provideStorage(() => getStorage()),
-    HotToastModule.forRoot()
+    HotToastModule.forRoot(),
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule  
   ],
   providers: [
-    ScreenTrackingService,UserTrackingService
+    ScreenTrackingService,UserTrackingService,
+    { provide: PERSISTENCE, useValue: 'session' }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,39 @@
+.content{
+    padding-top: 20vh;   
+}
+
+.box{
+    height:100%;
+    width:100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+}
+
+.title{
+    padding-top:2vh;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #000000;
+    text-align: center;
+}
+
+hr{
+    height: 5px;
+}
+
+.btn-agregar{
+    margin-top: 20%;
+    margin-bottom: 10%;
+}
+
+.table{
+    margin-top: 10vh;
+}
+
+.btn-borders{
+    border-radius: 20px;
+}

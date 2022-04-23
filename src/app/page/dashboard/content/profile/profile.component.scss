@@ -1,0 +1,58 @@
+.content{
+    display:flex;
+    justify-content: center;
+    height: 100vh;
+    width:100%;
+}
+
+.principal{
+    width: 100%;
+}
+
+.title{
+    text-align: center;
+    padding-top: 6vh;
+    padding-bottom: 1vh;
+    font-size: 4em;
+    font-weight: 300;
+    color: black;
+}
+
+hr{
+    margin-top: 0%;
+    padding-top: 0%;
+    height: 6px;
+    width: 100%;
+    background-color: black;
+}
+
+.photo-title{
+    padding-top: 1vh;
+    font-size: 2.5em;
+    font-weight: 400;
+    color: black;
+}
+
+.upload{
+    background-color: rgb(160, 126, 255);
+    color: white;
+    font-weight: 500;
+}
+
+.choose-file{
+    background-color: rgb(205, 186, 253);
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+}
+
+.main-text{
+    font-size: 1.5em;
+    font-weight: 350;
+    color: black;
+}
+
+.little-text{
+    font-size: 1.2em;
+    font-weight: 300;
+    color: rgb(133, 133, 133);
+}

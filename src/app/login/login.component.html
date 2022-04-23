@@ -22,8 +22,8 @@
                         <div class="mb-3">
                           <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                           <input type="password" class="form-control text-space" id="exampleInputPassword1" formControlName="password">
-                          <a routerLink="/recuperar">¿Olvidaste tu contraseña?</a>
-                        </div>
+                          <a class="modalLink" data-bs-toggle="modal" data-bs-target="#recuperarModal">¿Olvidaste tu contraseña?</a>
+                        </div>  
                         <button type="submit" class="btn btn-login w-100 btn-borders" (click)="login()" [disabled]="!this.LoginForm.valid">Iniciar</button>
                         <button class="btn btn-volver w-100 btn-borders" routerLink="/landing">Volver</button> 
                         <div class="text-center">
@@ -35,3 +35,26 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="recuperarModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Recuperar Contraseña </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="RecoveryForm" class="form-register">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
+            <input type="email" class="form-control text-space" id="exampleInputEmail1" formControlName="email">
+          </div>
+          <button type="submit" class="btn btn-login w-100 btn-borders" data-bs-dismiss="modal" (click)="reset()" [disabled]="!this.RecoveryForm.valid">Recuperar Contraseña</button>
+          <button class="btn btn-volver w-100 btn-borders" data-bs-dismiss="modal">Volver</button> 
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
