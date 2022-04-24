@@ -1,6 +1,6 @@
-<div class="init">
+<div class="init d-flex w-100 h-100 justify-content-center align-items-center ">
     <div class="container">
-        <div class="content">
+        <div class="content  d-flex w-100 h-100 justify-content-center align-items-center">
           <div class="row">
             <div class="col-md-6 left">
               <div class="text-center">
@@ -52,8 +52,12 @@
                             <label class="form-label">Código de Empresa</label>
                             <input type="text" class="form-control text-space" formControlName="codeE">
                         </div>
-                        <button type="submit" class="btn btn-login w-100 btn-borders" [disabled]="!this.RegisterForm.valid" (click)="register()">Registrar</button>
-                        <button type="submit" class="btn btn-volver w-100 btn-borders" routerLink="/landing">Volver</button>
+                        <p class="text-center">
+                            <button type="submit" class="btn btn-login w-100 btn-borders py-2" [disabled]="!this.RegisterForm.valid" (click)="register()">Registrar</button>
+                        </p>
+                        <p class="text-center">
+                            <button type="submit" class="btn btn-volver w-100 btn-borders py-2" routerLink="/landing">Volver</button>
+                        </p>
                     </form>
             </div>
           </div>

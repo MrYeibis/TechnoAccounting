@@ -1,8 +1,12 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 .init{
     position: absolute;
     margin:0%;
-    padding: 0%;
     height:100vh;
     width:100%;
     background-color: rgb(237, 231, 255);
@@ -10,7 +14,6 @@
 
 .content{
     position: relative;
-    margin-top: 2.5vh;
     height:80vh;
     width:100%;
 }
@@ -26,7 +29,7 @@
 }
 
 .title{
-    margin-top: 8vh;
+    margin-top: 3vh;
     margin-bottom: 3vh;
     color: white;
     font-size: 3rem ;
@@ -47,7 +50,7 @@ img{
 }
 
 .right{
-    height:95vh;
+    height:100%;
     width:40%;
     background-color: white;
     border-radius: 0px 7px 7px 0px;
@@ -59,7 +62,7 @@ img{
 }
 
 .login{
-    margin-top: 8vh;
+    margin-top: 3vh;
     margin-bottom: 3vh;
     font-size: 3rem;
     font-weight: 400;

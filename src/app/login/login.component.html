@@ -1,6 +1,6 @@
-<div class="init">
+<div class="init d-flex w-100 h-100 justify-content-center align-items-center ">
     <div class="container">
-        <div class="content">
+        <div class="content d-flex w-100 h-100 justify-content-center align-items-center ">
           <div class="row">
             <div class="col-md-6 left">
               <div class="text-center">
@@ -9,12 +9,12 @@
                   iniciando sesión en el formulario de la derecha. Si no tienes una cuenta puedes
                   solicitar acceso en el formulario de registro.
                 </p>
-                <img src="../../assets/static/images/login/lock.png" alt="">
+                <img style="object-fit: contain; margin-bottom: 2vh;" src="../../assets/static/images/login/lock.png" alt="">
               </div>
             </div>
-            <div class="col right">
+            <div class="col right  d-flex flex-column justify-content-center align-items-center">
               <p class="login text-center">Iniciar Sesión</p>
-                    <form [formGroup]="LoginForm" class="form-login">
+                    <form [formGroup]="LoginForm" style="width: 95%;" class="form-login">
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
                           <input type="email" class="form-control text-space" id="exampleInputEmail1" formControlName="email">
@@ -24,8 +24,12 @@
                           <input type="password" class="form-control text-space" id="exampleInputPassword1" formControlName="password">
                           <a class="modalLink" data-bs-toggle="modal" data-bs-target="#recuperarModal">¿Olvidaste tu contraseña?</a>
                         </div>  
-                        <button type="submit" class="btn btn-login w-100 btn-borders" (click)="login()" [disabled]="!this.LoginForm.valid">Iniciar</button>
-                        <button class="btn btn-volver w-100 btn-borders" routerLink="/landing">Volver</button> 
+                        <p class="text-cemter">
+                          <button type="submit" class="btn btn-login w-100 btn-borders py-2" (click)="login()" [disabled]="!this.LoginForm.valid">Iniciar</button>
+                        </p>
+                        <p class="text-cemter">
+                          <button class="btn btn-volver w-100 btn-borders py-2" routerLink="/landing">Volver</button> 
+                        </p>
                         <div class="text-center">
                           <a routerLink="/register">Solicita una cuenta aquí</a>
                         </div>
