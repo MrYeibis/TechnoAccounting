@@ -29,7 +29,7 @@
 }
 
 .title{
-    margin-top: 3vh;
+    margin-top: 5vh;
     margin-bottom: 3vh;
     color: white;
     font-size: 3rem ;
@@ -62,7 +62,7 @@ img{
 }
 
 .login{
-    margin-top: 3vh;
+    margin-top: 5vh;
     margin-bottom: 3vh;
     font-size: 3rem;
     font-weight: 400;
@@ -76,6 +76,8 @@ img{
 .text-space{
     height: 37px;
     border-radius: 20px;
+    padding-left: 10px;
+    margin-right: 10px;
 }
 
 .btn-login{
@@ -96,4 +98,8 @@ img{
 
 a{
     text-decoration: none;
+}
+
+.space-between{
+    margin-right: 10px;
 }

@@ -24,7 +24,8 @@ export class DashboardComponent implements OnInit {
   public data: any = [];
 
   constructor(private observer: BreakpointObserver, public router: Router, private crud: DbCrudService, 
-    private notifications: HotToastService, private auth: AuthService) {}
+    private notifications: HotToastService, private auth: AuthService) {
+    }
 
   ngOnInit(): void {
     this.crud.getData$().subscribe( serviceData => {
@@ -34,6 +35,8 @@ export class DashboardComponent implements OnInit {
     this.auth.getPicture$().subscribe( picture => {
       this.profileImage = picture;
     })
+
+    this.profileImage = getAuth().currentUser?.photoURL;
   }
 
   ngAfterViewInit() {

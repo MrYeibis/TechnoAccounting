@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Select2Module } from 'ng-select2-component';
 import { AuthService } from '../services/auth/auth.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { DbCrudService } from '../services/crud/db-crud.service';
@@ -51,25 +50,12 @@ export class RegisterComponent implements OnInit {
     rango: new FormControl('Por Asignar')
   })
 
-  Select2Data = [
-    {
-      value: 'CC',
-      label: 'CC'
-    },
-    {
-      value: 'Pasaporte',
-      label: 'Pasaporte'
-    },
-    {
-      value: 'Cedula de extranjería',
-      label: 'Cedula de extranjería',
-    }  
-  ]
 
   constructor(private authService: AuthService, private crud: DbCrudService, 
     private notifications: HotToastService, private router: Router) {}
 
   ngOnInit(): void {
+
   }
 
   public register(){

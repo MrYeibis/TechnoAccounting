@@ -13,7 +13,7 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { Select2Module } from 'ng-select2-component';
+import { NgSelect2Module } from 'ng-select2';
 import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './landing/navbar/navbar.component';
 import { MainComponent } from './landing/main/main.component';
@@ -63,7 +63,7 @@ import { PERSISTENCE } from '@angular/fire/compat/auth';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    Select2Module,
+    NgSelect2Module,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),

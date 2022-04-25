@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit {
 
   imagen:any = []
 
+  profileImage:any = "";
+
   constructor(private storageService: StorageService, private auth: AuthService, private crud: DbCrudService) { }
 
   ngOnInit(): void {
@@ -34,9 +36,8 @@ export class ProfileComponent implements OnInit {
       this.storageService.uploadImage(this.email + '_' + Date.now(), reader.result).then(urlImage => {
         console.log(urlImage)
         this.auth.updateProfile(this.user, '', urlImage)
-        location.reload();
       }).then(() => {
-        this.auth.getPicture;
+        this.profileImage = getAuth().currentUser?.photoURL;  
       })
     }
   }

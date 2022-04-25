@@ -11,6 +11,7 @@
                 <img src="../../assets/static/images/register/" alt="">
               </div>
             </div>
+            
             <div class="col right">
               <p class="login text-center">Registro</p>
                     <form [formGroup]="RegisterForm" class="form-login" >
@@ -20,15 +21,19 @@
                                 <input type="email" class="form-control text-space" formControlName="email">
                             </div>  
                             <div class="col-md-6">
-                                <div class="mb-3">
+                                <div class="mb-3 space-between">
                                     <label class="form-label">Nombre</label>
                                     <input type="text" class="form-control text-space" formControlName="name">
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3 space-between">
                                     <label class="form-label">Tipo de Documento</label>
-                                    <select2 type="text" class="form-control text-space" [data]="Select2Data" formControlName="tipDocu"></select2>
+                                    <select class="form-select text-space" aria-label="Default select example" formControlName="tipDocu">
+                                        <option value="CC">CC</option>
+                                        <option value="Pasaporte">Pasaporte</option>
+                                        <option value="Documento de extranjería">Documento de extranjería</option>
+                                      </select>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3 space-between">
                                     <label class="form-label">Contraseña</label>
                                     <input type="password" class="form-control text-space" formControlName="password">
                                 </div>
