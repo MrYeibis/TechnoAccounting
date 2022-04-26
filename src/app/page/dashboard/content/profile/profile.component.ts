@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getAuth } from '@angular/fire/auth';
+import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DbCrudService } from 'src/app/services/crud/db-crud.service';
 import { StorageService } from '../../../../services/storage/storage.service';
@@ -19,14 +20,13 @@ export class ProfileComponent implements OnInit {
 
   profileImage:any = "";
 
-  constructor(private storageService: StorageService, private auth: AuthService, private crud: DbCrudService) { }
+  constructor(private storageService: StorageService, private auth: AuthService, private notifications: HotToastService) { }
 
   ngOnInit(): void {
     
   }
 
   uploadFile(event: any) {
-    console.log(event.target.files)
     let file = event.target.files
     let reader = new FileReader();
 
@@ -34,10 +34,14 @@ export class ProfileComponent implements OnInit {
     reader.onloadend = () => {
       this.imagen.push(reader.result);
       this.storageService.uploadImage(this.email + '_' + Date.now(), reader.result).then(urlImage => {
-        console.log(urlImage)
-        this.auth.updateProfile(this.user, '', urlImage)
-      }).then(() => {
-        this.profileImage = getAuth().currentUser?.photoURL;  
+        this.auth.updateProfile(this.user, '', urlImage).pipe(this.notifications.observe({
+          success: 'Imagen subida con exito',
+          loading: 'La imagen se está subiendo',
+          error: 'Ha occurido un error'
+        })).subscribe(() => {
+          this.auth.newProfileImage(getAuth().currentUser?.photoURL)
+          console.log(this.auth.profileImage)
+        })
       })
     }
   }

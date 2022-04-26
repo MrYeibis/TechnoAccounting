@@ -32,10 +32,10 @@ export class DashboardComponent implements OnInit {
       this.data = serviceData;
     }) 
 
-    this.auth.getPicture$().subscribe( picture => {
-      this.profileImage = picture;
-    })
-
+    this.auth.newProfileImage$().subscribe( profileImage => {
+      this.profileImage = profileImage;
+    }) 
+    
     this.profileImage = getAuth().currentUser?.photoURL;
   }
 
@@ -57,8 +57,4 @@ export class DashboardComponent implements OnInit {
     this.notifications.success('Cerrado De Sesión Exitoso');
   }
 
-  check() {
-    this.crud.getData('email', String(getAuth().currentUser?.email), '/users' );
-    console.log(this.profileImage);
-  }
 }

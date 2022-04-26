@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, getAuth} from '@angular/fire/auth';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { authState } from 'rxfire/auth';
-import { from, Subject } from 'rxjs';
+import { from, Observable, Subject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
@@ -12,18 +12,12 @@ export class AuthService {
 
   userFire:any;
 
-  public email: any = '';
-  private email$: Subject<any>;
-
-  public picture: any = '';
-  private picture$: Subject<any>;
+  profileImage:any = "";
+  profileImage$: Subject<any>
 
   constructor(private auth: Auth) {
-    this.email = '';
-    this.email$ = new Subject();
-
-    this.picture = ''
-    this.picture$ = new Subject();
+    this.profileImage = "";
+    this.profileImage$ = new Subject();
 
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -56,13 +50,12 @@ export class AuthService {
     return from(sendPasswordResetEmail(this.auth, email));
   }
 
-  getPicture(){
-    this.picture = getAuth().currentUser?.photoURL;
-    console.log(this.picture)
-    this.picture$.next(this.picture);
+  newProfileImage(profileImage: any){
+    this.profileImage = profileImage;
+    this.profileImage$.next(this.profileImage);
   }
 
-  getPicture$(){
-    return this.picture$.asObservable();
+  newProfileImage$(): Observable<any>{
+    return this.profileImage$.asObservable();
   }
 }
