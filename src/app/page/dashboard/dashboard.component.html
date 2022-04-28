@@ -12,7 +12,7 @@
         <mat-sidenav #sidenav="matSidenav">
                 <div *ngFor="let item of data">
                     <img class="avatar mat-elevation-z8" src="{{profileImage}}" />
-                    <h4 class="name">{{item.name}}</h4>
+                    <h4 class="name">{{item.name}} {{item.surname}}</h4>
                     <p class="designation">{{item.rango}}</p>
                 </div>
             <mat-divider></mat-divider>

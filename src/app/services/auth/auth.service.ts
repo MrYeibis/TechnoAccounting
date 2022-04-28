@@ -58,4 +58,5 @@ export class AuthService {
   newProfileImage$(): Observable<any>{
     return this.profileImage$.asObservable();
   }
+  
 }

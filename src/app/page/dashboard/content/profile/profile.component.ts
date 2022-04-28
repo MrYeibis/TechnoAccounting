@@ -20,10 +20,14 @@ export class ProfileComponent implements OnInit {
 
   profileImage:any = "";
 
+
+  widthNumber:number = 0;
+  widthProgress:string = "";
+
   constructor(private storageService: StorageService, private auth: AuthService, private notifications: HotToastService) { }
 
   ngOnInit(): void {
-    
+    this.widthProgress = ''
   }
 
   uploadFile(event: any) {
@@ -35,8 +39,8 @@ export class ProfileComponent implements OnInit {
       this.imagen.push(reader.result);
       this.storageService.uploadImage(this.email + '_' + Date.now(), reader.result).then(urlImage => {
         this.auth.updateProfile(this.user, '', urlImage).pipe(this.notifications.observe({
-          success: 'Imagen subida con exito',
-          loading: 'La imagen se está subiendo',
+          success: 'Se subió la imagen correctamente',
+          loading: 'Subiendo imagen',
           error: 'Ha occurido un error'
         })).subscribe(() => {
           this.auth.newProfileImage(getAuth().currentUser?.photoURL)
@@ -45,4 +49,5 @@ export class ProfileComponent implements OnInit {
       })
     }
   }
+
 }

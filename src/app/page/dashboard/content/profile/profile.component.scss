@@ -23,7 +23,7 @@ hr{
     padding-top: 0%;
     height: 6px;
     width: 100%;
-    background-color: black;
+    background-color: rgb(127, 81, 255);
 }
 
 .photo-title{
@@ -55,4 +55,10 @@ hr{
     font-size: 1.2em;
     font-weight: 300;
     color: rgb(133, 133, 133);
+}
+
+@media(max-width: 800px){
+    .title{
+        line-height: 60px;
+    }
 }
