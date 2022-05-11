@@ -6,6 +6,7 @@ import { getAuth } from '@angular/fire/auth';
 import { DbCrudService } from 'src/app/services/crud/db-crud.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -18,25 +19,71 @@ export class DashboardComponent implements OnInit {
   sidenav!: MatSidenav;
 
   public email:any = '';
-
+  public name: any = '';
+  public surname: any = '';
   public profileImage:any = '';
-
   public data: any = [];
+  public rank: any = "";
+  public photoURLDefecto: any = "";
+  public codeE: any = "";
 
-  constructor(private observer: BreakpointObserver, public router: Router, private crud: DbCrudService, 
+  public employee: string = '';
+  public productName: string = '';
+  public amount: number = 1;
+  public unitPrice: number = 1;
+
+  public businessMoney: number = 0;
+
+  editarForm = new FormGroup({
+    rango: new FormControl('', Validators.compose([Validators.required, Validators.minLength(2)]))
+  })
+
+  editarFormVentas = new FormGroup({
+    seller: new FormControl('', [Validators.required]),
+    productName: new FormControl('', [Validators.required]),
+    amount: new FormControl('', [Validators.required]),
+    unitPrice: new FormControl('', [Validators.required]),
+    totalPrice: new FormControl('', [Validators.required])
+  })
+
+  constructor(private observer: BreakpointObserver, public router: Router, public crud: DbCrudService, 
     private notifications: HotToastService, private auth: AuthService) {
     }
 
   ngOnInit(): void {
     this.crud.getData$().subscribe( serviceData => {
       this.data = serviceData;
+      for(let item of this.data){
+        if(this.email == ''){
+          this.email = item.email
+          this.name = item.name;
+          this.surname = item.surname;
+          this.crud.employee = item.name + ' ' + item.surname;
+          this.employee = this.crud.employee;
+          this.rank = item.rango;
+          this.photoURLDefecto = item.photoURLDefecto;
+          this.profileImage = getAuth().currentUser?.photoURL;
+          this.codeE = item.codeE;
+        }
+      }
+    }) 
+
+    this.crud.getBusinessMoney$().subscribe( businessMoneyService => {
+      this.data = businessMoneyService;
+      for(let item of this.data){
+        this.businessMoney = item.businessMoney;
+      }
     }) 
 
     this.auth.newProfileImage$().subscribe( profileImage => {
       this.profileImage = profileImage;
+      for(let item of this.data){
+        this.photoURLDefecto = item.photoURLDefecto;
+      }
     }) 
-    
-    this.profileImage = getAuth().currentUser?.photoURL;
+
+    this.crud.getData('email', String(getAuth().currentUser?.email), '/users')
+    setTimeout(() => {this.crud.getBusinessMoney('/business/' + this.crud.codeE);}, 100) 
   }
 
   ngAfterViewInit() {
@@ -55,6 +102,16 @@ export class DashboardComponent implements OnInit {
     getAuth().signOut();
     this.router.navigate(['/landing']);
     this.notifications.success('Cerrado De Sesión Exitoso');
+  }
+
+  changeRank(){
+    this.crud.updateData(this.crud.id, this.editarForm.value, '/users');
+    this.crud.getData('codeE', this.crud.codeE, '/users' );
+  }
+
+  changeSale(){
+    this.crud.updateData(this.crud.id, this.editarFormVentas.value, '/business/' + this.crud.codeE + '/sells');
+    setTimeout(() => {this.crud.getAllData('/business/' + this.crud.codeE + '/sells');}, 200)
   }
 
 }

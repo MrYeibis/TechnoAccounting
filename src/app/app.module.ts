@@ -38,6 +38,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import { ProfileComponent } from './page/dashboard/content/profile/profile.component';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
+import { UsersComponent } from './page/dashboard/content/administration/users/users.component';
+import { VentasComponent } from './page/dashboard/content/ventas/ventas.component';
+import { ComprasComponent } from './page/dashboard/content/compras/compras.component';
 
 
 @NgModule({
@@ -56,7 +59,10 @@ import { PERSISTENCE } from '@angular/fire/compat/auth';
     DashboardComponent,
     MainDashboardComponent,
     VerificateComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsersComponent,
+    VentasComponent,
+    ComprasComponent,
   ],
   imports: [
     BrowserModule,

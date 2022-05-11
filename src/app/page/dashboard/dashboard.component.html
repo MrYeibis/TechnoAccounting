@@ -10,11 +10,15 @@
 
     <mat-sidenav-container>
         <mat-sidenav #sidenav="matSidenav">
-                <div *ngFor="let item of data">
-                    <img class="avatar mat-elevation-z8" src="{{profileImage}}" />
-                    <h4 class="name">{{item.name}} {{item.surname}}</h4>
-                    <p class="designation">{{item.rango}}</p>
+                <div>
+                    <img class="avatar mat-elevation-z8" src="{{profileImage}}"/>
+                    <h4 class="name">{{name}} {{surname}}</h4>
+                    <p class="designation">{{rank}}</p>
                 </div>
+            <mat-divider></mat-divider>
+
+            <div style="font-size: 1rem;">General</div>
+
             <mat-divider></mat-divider>
             
             <button mat-button class="menu-button" routerLink="/dashboard/inicio" routerLinkActive="active">
@@ -26,13 +30,54 @@
                 <mat-icon>person</mat-icon>
                 <span>Perfil</span>
             </button>
-
-            <div class="admin-items" *ngIf="">
+            
+            <div class="administration">
                 <mat-divider></mat-divider>
 
-                <button mat-button class="menu-button">
-                    <mat-icon>person</mat-icon>
-                    <span>Perfil</span>
+                <div style="font-size: 1rem;">Administración</div>
+
+                <mat-divider></mat-divider>
+
+                <button mat-button class="menu-button" routerLink="/dashboard/administration/users" routerLinkActive="active" (click)="this.crud.codeE = codeE">
+                    <mat-icon>supervisor_account</mat-icon>
+                    <span>Usuarios</span>
+                </button>
+
+                <button mat-button class="menu-button" routerLink="/dashboard/ventas" routerLinkActive="active" (click)="this.crud.codeE = codeE">
+                    <mat-icon>timeline</mat-icon>
+                    <span>Ventas</span>
+                </button>
+
+                <button mat-button class="menu-button" routerLink="/dashboard/compras" routerLinkActive="active" (click)="this.crud.codeE = codeE">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    <span>Compras</span>
+                </button>
+                
+            </div>
+
+            <div class="ventas" *ngIf="rank == 'Vendedor'">
+                <mat-divider></mat-divider>
+
+                <div style="font-size: 1rem;">Vendedor</div>
+
+                <mat-divider></mat-divider>
+
+                <button mat-button class="menu-button" routerLink="/dashboard/ventas" routerLinkActive="active" (click)="this.crud.codeE = codeE">
+                    <mat-icon>timeline</mat-icon>
+                    <span>Ventas</span>
+                </button>
+            </div>
+
+            <div class="compras" *ngIf="rank == 'Comprador'">
+                <mat-divider></mat-divider>
+
+                <div style="font-size: 1rem;">Comprador</div>
+
+                <mat-divider></mat-divider>
+
+                <button mat-button class="menu-button" routerLink="/dashboard/compras" routerLinkActive="active" (click)="this.crud.codeE = codeE">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    <span>Compras</span>
                 </button>
             </div>
 
@@ -45,7 +90,11 @@
 
             <mat-divider></mat-divider>
 
-            
+            <div class="businessMoney justify-content-center d-flex flex-column align-items-center text-center position-absolute bottom-0">
+              <h4 class="businessMoney-Title">Saldo Empresa</h4>
+              <h2 class="businessMoney-Amount">${{businessMoney}}</h2>
+          </div>
+
             </mat-sidenav>
 
             <mat-sidenav-content>
@@ -54,3 +103,79 @@
             </div>
             </mat-sidenav-content>
     </mat-sidenav-container>
+
+      <!-- Modal Ventas -->
+      <div class="modal fade" id="editVenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar Venta De : {{this.crud.productName}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="editarFormVentas">
+                <label class="form-label label">Vendedor</label>
+                <input type="text" class="form-control btn-borders" style="margin-bottom: 20px;" [ngModel]="employee" placeholder="El nombre del vendedor se asigna automaticamente" formControlName="seller" readonly>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label class="form-label">Producto:</label>
+                    <input type="text" class="form-control" placeholder="Producto Vendido" formControlName="productName">
+                    <br>
+                    <label class="form-label">Cantidad Vendida:</label>
+                    <input type="number" class="form-control" [(ngModel)]="amount" placeholder="Número De Unidades" formControlName="amount">
+                  </div>
+                  <div class="col">
+                    <label class="form-label">Precio Unitario:</label>
+                    <input type="number" class="form-control" [(ngModel)]="unitPrice" placeholder="Valor De Cada Producto" formControlName="unitPrice">
+                    <br>
+                    <label class="form-label">Precio Total:</label>
+                    <input type="number" class="form-control" [ngModel]="amount*unitPrice" placeholder="Se calcula automaticamente" formControlName="totalPrice" readonly>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" [disabled]="!this.editarFormVentas.valid" (click)="changeSale()">Guardar Cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Ventas -->
+      <div class="modal fade" id="editVenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Editar Venta De : {{this.crud.productName}}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="editarFormVentas">
+                <label class="form-label label">Vendedor</label>
+                <input type="text" class="form-control btn-borders" style="margin-bottom: 20px;" [ngModel]="employee" placeholder="El nombre del vendedor se asigna automaticamente" formControlName="seller" readonly>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label class="form-label">Producto:</label>
+                    <input type="text" class="form-control" placeholder="Producto Vendido" formControlName="productName">
+                    <br>
+                    <label class="form-label">Cantidad Vendida:</label>
+                    <input type="number" class="form-control" [(ngModel)]="amount" placeholder="Número De Unidades" formControlName="amount">
+                  </div>
+                  <div class="col">
+                    <label class="form-label">Precio Unitario:</label>
+                    <input type="number" class="form-control" [(ngModel)]="unitPrice" placeholder="Valor De Cada Producto" formControlName="unitPrice">
+                    <br>
+                    <label class="form-label">Precio Total:</label>
+                    <input type="number" class="form-control" [ngModel]="amount*unitPrice" placeholder="Se calcula automaticamente" formControlName="totalPrice" readonly>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" [disabled]="!this.editarFormVentas.valid" (click)="changeSale()">Guardar Cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>

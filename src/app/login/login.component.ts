@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
       }else{
         this.router.navigate(['/dashboard/inicio']);
       }
-      this.crud.getData('email', email, '/users' )
     })
   }
 

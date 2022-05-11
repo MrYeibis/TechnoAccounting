@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { DbCrudService } from '../services/crud/db-crud.service';
 import { Router } from '@angular/router';
+import { getAuth } from '@angular/fire/auth';
 
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -61,10 +62,12 @@ export class RegisterComponent implements OnInit {
   public register(){
       this.authService.register(this.RegisterForm.controls['email'].value, this.RegisterForm.controls['password'].value).pipe(
         this.notifications.observe({
-          loading: 'Registrando Usuario',
           error: 'Ha occurido un error'
         })
       ).subscribe(() => {
+        this.authService.login(this.RegisterForm.controls['email'].value, this.RegisterForm.controls['password'].value)
+        this.authService.updateProfile(getAuth().currentUser, '', 'https://firebasestorage.googleapis.com/v0/b/techno-accounting.appspot.com/o/users%2Favatar-defecto.png?alt=media&token=f9d84415-8613-4bae-b9f3-ecefd04e7af4')
+        this.authService.logout();
         this.toDbForm.controls['name'].setValue(this.RegisterForm.controls['name'].value);
         this.toDbForm.controls['surname'].setValue(this.RegisterForm.controls['surname'].value);
         this.toDbForm.controls['tipDocu'].setValue(this.RegisterForm.controls['tipDocu'].value);

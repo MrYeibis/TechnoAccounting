@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getAuth } from '@angular/fire/auth';
+import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { DbCrudService } from 'src/app/services/crud/db-crud.service';
@@ -20,14 +21,12 @@ export class ProfileComponent implements OnInit {
 
   profileImage:any = "";
 
-
   widthNumber:number = 0;
   widthProgress:string = "";
 
   constructor(private storageService: StorageService, private auth: AuthService, private notifications: HotToastService) { }
 
   ngOnInit(): void {
-    this.widthProgress = ''
   }
 
   uploadFile(event: any) {
@@ -44,10 +43,8 @@ export class ProfileComponent implements OnInit {
           error: 'Ha occurido un error'
         })).subscribe(() => {
           this.auth.newProfileImage(getAuth().currentUser?.photoURL)
-          console.log(this.auth.profileImage)
         })
       })
     }
   }
-
 }

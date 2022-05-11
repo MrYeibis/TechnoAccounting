@@ -13,10 +13,28 @@ export class DbCrudService {
   public data: any = [];
   private data$: Subject<any[]>;
 
+  public businessMoney: any = [];
+  private businessMoney$: Subject<any[]>;
+
+  public codeE: any = "";
+
+  public id: string = "";
+  public name: string = "";
+  public surname: string = "";
+  public rank: string = "";
+
+  public employee: string = "";
+  public productName: string = "";
+  public amount: number = 0;
+  public unitPrice: number = 0;
+  public totalPrice: number = 0;
 
   constructor(private db: Firestore, private notifications: HotToastService) {
     this.data = []
     this.data$ = new Subject();
+
+    this.businessMoney = [];
+    this.businessMoney$ = new Subject();
   }
 
   addData(value: any, buscar: string){
@@ -38,6 +56,17 @@ export class DbCrudService {
     })
   }
 
+  getBusinessMoney(where: string){
+    const dbInstance = collection(this.db, where);
+    getDocs(dbInstance)
+    .then((response) => {
+      this.businessMoney = [...response.docs.map((item) => {
+        return { ...item.data(), id: item}
+      })]
+      this.businessMoney$.next(this.businessMoney);
+    })
+  }
+
   getAllData(where: string) {
     const dbInstance = collection(this.db, where);
     getDocs(dbInstance)
@@ -51,6 +80,10 @@ export class DbCrudService {
 
   getData$(): Observable<any[]>{
     return this.data$.asObservable();
+  }
+
+  getBusinessMoney$(): Observable<any[]>{
+    return this.businessMoney$.asObservable();
   }
 
   updateData(id: string, changedata: any, buscar: string){

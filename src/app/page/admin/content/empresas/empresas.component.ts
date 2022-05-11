@@ -14,7 +14,8 @@ export class EmpresasComponent implements OnInit {
   public data: any = [];
 
   new = new FormGroup({
-    name: new FormControl('', [Validators.required])
+    name: new FormControl('', [Validators.required]),
+    businessMoney: new FormControl(0)
   })
 
   editarForm = new FormGroup({

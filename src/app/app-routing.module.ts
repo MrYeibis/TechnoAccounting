@@ -10,6 +10,9 @@ import { MainComponent } from './page/admin/content/main/main.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { MainDashboardComponent } from './page/dashboard/content/main-dashboard/main-dashboard.component';
 import { ProfileComponent } from './page/dashboard/content/profile/profile.component';
+import { UsersComponent } from './page/dashboard/content/administration/users/users.component';
+import { VentasComponent } from './page/dashboard/content/ventas/ventas.component';
+import { ComprasComponent } from './page/dashboard/content/compras/compras.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'landing', pathMatch: 'full'},
@@ -25,7 +28,10 @@ const routes: Routes = [
   ]},
   {path: 'dashboard', component:DashboardComponent, children: [
     {path: 'inicio', component:MainDashboardComponent},
-    {path: 'perfil', component:ProfileComponent}
+    {path: 'perfil', component:ProfileComponent},
+    {path: 'administration/users', component:UsersComponent},
+    {path: 'ventas', component:VentasComponent},
+    {path: 'compras', component:ComprasComponent},
 
   ]}
 ];

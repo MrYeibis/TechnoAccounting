@@ -5,7 +5,7 @@ mat-toolbar {
 
 mat-sidenav {
     display: flex;
-    margin: 16px;
+    margin: 12px;
     width: 200px;
     border-right: none;
     background: rgb(127, 81, 255);
@@ -77,4 +77,48 @@ mat-sidenav-container {
     -o-transition: all 0.15s ease-in;
     /* Standard */
     transition: all 0.15s ease-in;
+}
+
+mat-divider{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.modal-title{
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+    color:rgb(127, 81, 255);
+}
+
+.new-rank{
+    font-size: 1.3rem;
+}
+
+.text-space{
+    height: 37px;
+    border-radius: 20px;
+    padding-left: 10px;
+    margin-right: 10px;
+}
+
+.btn-primary{
+    background-color: rgb(127, 81, 255);
+}
+
+.businessMoney{
+    margin-left: 16px;
+}
+
+.businessMoney-Title{
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.businessMoney-Amount{
+    margin-top: 0;
+    font-size: 1rem;
+    font-weight: bold;
 }
