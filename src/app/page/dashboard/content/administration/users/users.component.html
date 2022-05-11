@@ -18,7 +18,7 @@
                 <td>{{item.rango}}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn" style="background-color: rgb(127, 81, 255); color: white; font-weight: 500;" data-bs-toggle="modal" data-bs-target="#newRank" (click)="select(item.id.id, item.name, item.surname, item.rango)">Editar</button>
+                        <button type="button" class="btn" style="background-color: rgb(127, 81, 255); color: white; font-weight: 500;" data-bs-toggle="modal" data-bs-target="#editUser" (click)="select(item.id.id, item.name, item.surname, item.rango)">Editar</button>
                         <button type="button" class="btn btn-danger" (click)="deleteUser(item.id.id)">Eliminar</button>
                     </div>
                 </td>

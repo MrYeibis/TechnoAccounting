@@ -23,6 +23,11 @@ export class DbCrudService {
   public surname: string = "";
   public rank: string = "";
 
+  public idUser: string = "";
+  public nameUser: string = "";
+  public surnameUser: string = "";
+  public rankUser: string = "";
+
   public employee: string = "";
   public productName: string = "";
   public amount: number = 0;

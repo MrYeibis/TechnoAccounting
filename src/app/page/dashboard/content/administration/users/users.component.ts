@@ -22,10 +22,10 @@ export class UsersComponent implements OnInit {
   }
 
   select(id: string, name: string, surname: string, rank: string){
-    this.crud.id = id;
-    this.crud.name = name;
-    this.crud.surname = surname;
-    this.crud.rank = rank
+    this.crud.idUser = id;
+    this.crud.nameUser = name;
+    this.crud.surnameUser = surname;
+    this.crud.rankUser = rank
   }
 
   deleteUser(id:string) {

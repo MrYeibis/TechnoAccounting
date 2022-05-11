@@ -104,39 +104,27 @@
             </mat-sidenav-content>
     </mat-sidenav-container>
 
-      <!-- Modal Ventas -->
-      <div class="modal fade" id="editVenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <!-- Modal Usuarios -->
+       <div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Editar Venta De : {{this.crud.productName}}</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Editar Usuario : {{this.crud.nameUser}} {{this.crud.surnameUser}}</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form [formGroup]="editarFormVentas">
-                <label class="form-label label">Vendedor</label>
-                <input type="text" class="form-control btn-borders" style="margin-bottom: 20px;" [ngModel]="employee" placeholder="El nombre del vendedor se asigna automaticamente" formControlName="seller" readonly>
-                <div class="row">
-                  <div class="col-md-6">
-                    <label class="form-label">Producto:</label>
-                    <input type="text" class="form-control" placeholder="Producto Vendido" formControlName="productName">
-                    <br>
-                    <label class="form-label">Cantidad Vendida:</label>
-                    <input type="number" class="form-control" [(ngModel)]="amount" placeholder="Número De Unidades" formControlName="amount">
-                  </div>
-                  <div class="col">
-                    <label class="form-label">Precio Unitario:</label>
-                    <input type="number" class="form-control" [(ngModel)]="unitPrice" placeholder="Valor De Cada Producto" formControlName="unitPrice">
-                    <br>
-                    <label class="form-label">Precio Total:</label>
-                    <input type="number" class="form-control" [ngModel]="amount*unitPrice" placeholder="Se calcula automaticamente" formControlName="totalPrice" readonly>
-                  </div>
-                </div>
+              <form [formGroup]="editarFormUser">
+                <label class="form-label newRank">Nuevo Rango:</label>
+                <select class="form-select text-space" formControlName="rango">
+                  <option value="Comprador">Comprador</option>
+                  <option value="Vendedor">Vendedor</option>
+                  <option value="Contador">Contador</option>
+                </select>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" [disabled]="!this.editarFormVentas.valid" (click)="changeSale()">Guardar Cambios</button>
+              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" [disabled]="!this.editarFormUser.valid" (click)="changeRank()">Guardar Cambios</button>
             </div>
           </div>
         </div>

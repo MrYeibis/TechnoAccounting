@@ -8,7 +8,6 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,6 +16,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class DashboardComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+
+  public userAvaible: boolean = false;
 
   public email:any = '';
   public name: any = '';
@@ -34,7 +35,7 @@ export class DashboardComponent implements OnInit {
 
   public businessMoney: number = 0;
 
-  editarForm = new FormGroup({
+  editarFormUser = new FormGroup({
     rango: new FormControl('', Validators.compose([Validators.required, Validators.minLength(2)]))
   })
 
@@ -51,6 +52,7 @@ export class DashboardComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
     this.crud.getData$().subscribe( serviceData => {
       this.data = serviceData;
       for(let item of this.data){
@@ -105,13 +107,12 @@ export class DashboardComponent implements OnInit {
   }
 
   changeRank(){
-    this.crud.updateData(this.crud.id, this.editarForm.value, '/users');
+    this.crud.updateData(this.crud.idUser, this.editarFormUser.value, '/users');
     this.crud.getData('codeE', this.crud.codeE, '/users' );
   }
 
   changeSale(){
     this.crud.updateData(this.crud.id, this.editarFormVentas.value, '/business/' + this.crud.codeE + '/sells');
-    setTimeout(() => {this.crud.getAllData('/business/' + this.crud.codeE + '/sells');}, 200)
+    setTimeout(() => {this.crud.getData('seller', this.crud.employee, '/business/' + this.crud.codeE + '/sells');}, 200)
   }
-
 }
