@@ -1,0 +1,80 @@
+.principal-title{
+    text-align: center;
+    padding-top: 6vh;
+    padding-bottom: 1vh;
+    font-size: 5em;
+    font-weight: 400;
+    color: rgb(127, 81, 255);
+}
+
+.secondary-title{
+    text-align: center;
+    padding-top: 6vh;
+    padding-bottom: 1vh;
+    font-size: 3.5em;
+    font-weight: 300;
+    color: black;
+}
+
+.purple-bar{
+    margin-top: 0%;
+    padding-top: 0%;
+    height: 6px;
+    width: 100%;
+    background-color: rgb(127, 81, 255);
+}
+
+.businessMoney-Title{
+    font-size: 2rem;
+    color: rgb(127, 81, 255);
+}
+
+.businessMoney-Amount{
+    font-size: 1.5rem;
+    color: black;
+}
+
+.box{
+    height:100%;
+    width:100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 7px 7px 7px 7px;
+    background-color: rgb(127, 81, 255);
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+}
+
+.btn-agregar{
+    margin-top: 20%;
+    margin-bottom: 10%;
+}
+
+.table{
+    margin-top: 8vh;
+}
+
+.btn-borders{
+    border-radius: 20px;
+}
+
+.label{
+    margin-left: 2px;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: black;
+}
+
+.collapseTitle{
+    font-size: 3em;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.btn-purple{
+    background-color: rgb(127, 81, 255);
+    color: white;
+    border-color: rgb(127, 81, 255);
+}

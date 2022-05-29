@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { getAuth } from '@angular/fire/auth';
-import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
+import { getAuth } from 'firebase/auth';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { DbCrudService } from 'src/app/services/crud/db-crud.service';
-import { StorageService } from '../../../../services/storage/storage.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'app-informes',
+  templateUrl: './informes.component.html',
+  styleUrls: ['./informes.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class InformesComponent implements OnInit {
 
   email = getAuth().currentUser?.email;
 

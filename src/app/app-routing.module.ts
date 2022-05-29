@@ -13,6 +13,7 @@ import { ProfileComponent } from './page/dashboard/content/profile/profile.compo
 import { UsersComponent } from './page/dashboard/content/administration/users/users.component';
 import { VentasComponent } from './page/dashboard/content/ventas/ventas.component';
 import { ComprasComponent } from './page/dashboard/content/compras/compras.component';
+import { InformesComponent } from './page/dashboard/content/contaduria/informes/informes.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'landing', pathMatch: 'full'},
@@ -32,6 +33,9 @@ const routes: Routes = [
     {path: 'administration/users', component:UsersComponent},
     {path: 'ventas', component:VentasComponent},
     {path: 'compras', component:ComprasComponent},
+    {path: 'contaduria', children: [
+      {path: 'informes',  component:InformesComponent},
+    ]},
 
   ]}
 ];

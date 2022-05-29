@@ -42,6 +42,7 @@ import { PERSISTENCE } from '@angular/fire/compat/auth';
 import { UsersComponent } from './page/dashboard/content/administration/users/users.component';
 import { VentasComponent } from './page/dashboard/content/ventas/ventas.component';
 import { ComprasComponent } from './page/dashboard/content/compras/compras.component';
+import { InformesComponent } from './page/dashboard/content/contaduria/informes/informes.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { ComprasComponent } from './page/dashboard/content/compras/compras.compo
     UsersComponent,
     VentasComponent,
     ComprasComponent,
+    InformesComponent,
   ],
   imports: [
     BrowserModule,

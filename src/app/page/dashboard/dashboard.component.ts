@@ -47,6 +47,14 @@ export class DashboardComponent implements OnInit {
     totalPrice: new FormControl('', [Validators.required])
   })
 
+  editarFormCompras = new FormGroup({
+    buyer: new FormControl('', [Validators.required]),
+    productName: new FormControl('', [Validators.required]),
+    amount: new FormControl('', [Validators.required]),
+    unitPrice: new FormControl('', [Validators.required]),
+    totalPrice: new FormControl('', [Validators.required])
+  })
+
   constructor(private observer: BreakpointObserver, public router: Router, public crud: DbCrudService, 
     private notifications: HotToastService, private auth: AuthService) {
     }
@@ -114,5 +122,10 @@ export class DashboardComponent implements OnInit {
   changeSale(){
     this.crud.updateData(this.crud.id, this.editarFormVentas.value, '/business/' + this.crud.codeE + '/sells');
     setTimeout(() => {this.crud.getData('seller', this.crud.employee, '/business/' + this.crud.codeE + '/sells');}, 200)
+  }
+
+  changeBuy(){
+    this.crud.updateData(this.crud.id, this.editarFormCompras.value, '/business/' + this.crud.codeE + '/buys');
+    setTimeout(() => {this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/buys');}, 200)
   }
 }
