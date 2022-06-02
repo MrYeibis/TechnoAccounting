@@ -1,15 +1,52 @@
-<div class="content">
-    <div class="principal">
-        <h4 class="title">Informes Contables</h4>
-        <hr>
+<div class="container">
+    <h4 class="principal-title">Informes</h4>
+    <hr class="purple-bar">
+    <div class="box">
+        <div class="container">
+            <p class="text-center mt-4">
+                <a class="fw-1 collapseTitle" data-bs-toggle="collapse" href="#collapseForm" role="button" aria-expanded="false" aria-controls="collapseForm">
+                    Agregar Informe
+                    </a>
+            </p>
             <div>
-                <h2 class="photo-title">Informes</h2>
-                <p class="main-text">Puedes seleccionar una nueva foto de perfil desde tu dispositivo para personalizar tu perfil.</p>
-                <p class="little-text">Tu foto de perfil la puedes ver al lado izquierdo, en la barra de navegación.</p>
-                <div class="input-group mb-3">
-                <input type="file" class="form-control choose-file" accept=" .png, .jpg, .jpeg" (change)="uploadFile($event)">
-                </div>
+                  <div class="collapse" id="collapseForm">
+                    <div class="card card-body mb-3" >
+                        <form [formGroup]="new" >
+                            <label class="form-label label">Contador</label>
+                            <input type="text" class="form-control btn-borders" style="margin-bottom: 20px;" [ngModel]="employee" placeholder="El nombre del vendedor se asigna automaticamente" formControlName="accountant" readonly>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Fecha del informe</label>
+                                    <input type="month" class="form-control btn-borders" formControlName="date">
+                                </div>
+                                <div class="col">
+                                    <input type="file" class="form-control choose-file" accept=" .pdf" style="margin-top: 20px;" (change)="getEvent($event)">
+                                </div>
+                            </div>
+                            <button class="btn btn-borders" style="width: 100%; margin-top: 20px; margin-bottom: 20px; background-color: rgb(127, 81, 255); color: white;" (click)="uploadFile(this.event)" [disabled]="!this.new.valid">Agregar</button>
+                        </form>
+                    </div>
+                  </div>
             </div>
-            <hr>
+        </div>
     </div>
-</div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Contador</th>
+            <th scope="col">Año - Mes del Informe</th>
+            <th scope="col">Descarga</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+            <td>{{item.accountant}}</td>
+            <td>{{item.date}}</td>
+            <td>
+                <div class="btn-group" role="group">
+                    <a type="button" class="btn btn-purple" href="{{item.urlFile}}" target="_blank">Descargar</a>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>

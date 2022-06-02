@@ -1,0 +1,58 @@
+.principal-title{
+    text-align: center;
+    padding-top: 6vh;
+    padding-bottom: 1vh;
+    font-size: 5em;
+    font-weight: 400;
+    color: rgb(127, 81, 255);
+}
+
+.purple-bar{
+    margin-top: 0%;
+    padding-top: 0%;
+    height: 6px;
+    width: 100%;
+    background-color: rgb(127, 81, 255);
+}
+
+.box{
+    height:100%;
+    width:100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 7px 7px 7px 7px;
+    background-color: rgb(127, 81, 255);
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+}
+
+.label{
+    margin-left: 2px;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: black;
+}
+
+.collapseTitle{
+    font-size: 3em;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.choose-file{
+    background-color: rgb(205, 186, 253);
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+}
+
+.table{
+    margin-top: 20px;
+}
+
+.btn-purple{
+    background-color: rgb(127, 81, 255);
+    color: white;
+    border-color: rgb(127, 81, 255);
+}

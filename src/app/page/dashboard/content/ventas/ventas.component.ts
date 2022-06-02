@@ -17,6 +17,7 @@ export class VentasComponent implements OnInit {
   public employee: string = "";
 
   new = new FormGroup({
+    billNumber: new FormControl(0, [Validators.required]),
     productName: new FormControl('', [Validators.required]),
     amount: new FormControl('', [Validators.required]),
     unitPrice: new FormControl('', [Validators.required]),

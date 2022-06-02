@@ -38,8 +38,8 @@ export class ProfileComponent implements OnInit {
       this.imagen.push(reader.result);
       this.storageService.uploadImage(this.email, reader.result).then(urlImage => {
         this.auth.updateProfile(this.user, '', urlImage).pipe(this.notifications.observe({
-          success: 'Se subió la imagen correctamente',
-          loading: 'Subiendo imagen',
+          success: 'Se subió la foto de perfil correctamente',
+          loading: 'Subiendo foto de perfil',
           error: 'Ha occurido un error'
         })).subscribe(() => {
           this.auth.newProfileImage(getAuth().currentUser?.photoURL)
