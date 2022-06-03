@@ -52,7 +52,8 @@ export class DashboardComponent implements OnInit {
     productName: new FormControl('', [Validators.required]),
     amount: new FormControl('', [Validators.required]),
     unitPrice: new FormControl('', [Validators.required]),
-    totalPrice: new FormControl('', [Validators.required])
+    totalPrice: new FormControl('', [Validators.required]),
+    provider: new FormControl('', [Validators.required])
   })
 
   constructor(private observer: BreakpointObserver, public router: Router, public crud: DbCrudService, 
@@ -71,6 +72,7 @@ export class DashboardComponent implements OnInit {
           this.crud.employee = item.name + ' ' + item.surname;
           this.employee = this.crud.employee;
           this.rank = item.rango;
+          this.crud.rank = this.rank
           this.photoURLDefecto = item.photoURLDefecto;
           this.profileImage = getAuth().currentUser?.photoURL;
           this.codeE = item.codeE;

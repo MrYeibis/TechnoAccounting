@@ -14,22 +14,26 @@
                         <form [formGroup]="new" >
                             <label class="form-label label">Comprador</label>
                             <input type="text" class="form-control btn-borders" style="margin-bottom: 20px;" [ngModel]="employee" placeholder="El nombre del vendedor se asigna automaticamente" formControlName="buyer" readonly>
-                            <label class="form-label label">Número de factura</label>
-                            <input type="number" class="form-control btn-borders" style="margin-bottom: 20px;" [ngModel]="employee" placeholder="Digite el número de la factura" formControlName="billNumber">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label class="form-label label">Valor Comprado</label>
-                                    <input type="text" class="form-control btn-borders" placeholder="Nombre Producto" formControlName="productName">
-                                    <br>
-                                    <label class="form-label label">Valor Unitario</label>
-                                    <input type="number" class="form-control btn-borders" [(ngModel)]="unitPrice" placeholder="Valor De Cada Producto" min="1" formControlName="unitPrice">
+                                  <label class="form-label label">Número de factura</label>
+                                  <input type="number" class="form-control btn-borders" placeholder="Digite el número de la factura" formControlName="billNumber">
+                                  <br>
+                                  <label class="form-label label">Producto Comprado</label>
+                                  <input type="text" class="form-control btn-borders" placeholder="Nombre Producto" formControlName="productName">
+                                  <br>
+                                  <label class="form-label label">Valor Unitario</label>
+                                  <input type="number" class="form-control btn-borders" [(ngModel)]="unitPrice" placeholder="Valor De Cada Producto" min="1" formControlName="unitPrice">
                                 </div>
                                 <div class="col">
-                                    <label class="form-label label">Cantidad Comprada</label>
-                                    <input type="number" class="form-control btn-borders" [(ngModel)]="amount" min="1" placeholder="Número De Unidades" formControlName="amount">
-                                    <br>
-                                    <label class="form-label label">Precio Total</label>
-                                    <input type="number" class="form-control btn-borders" [ngModel]="amount*unitPrice" placeholder="Se calcula automaticamente" formControlName="totalPrice" readonly>
+                                  <label class="form-label label">Proveedor</label>
+                                    <input type="text" class="form-control btn-borders" placeholder="Nombre Proveedor" formControlName="provider">
+                                  <br>
+                                  <label class="form-label label">Cantidad Comprada</label>
+                                  <input type="number" class="form-control btn-borders" [(ngModel)]="amount" min="1" placeholder="Número De Unidades" formControlName="amount">
+                                  <br>
+                                  <label class="form-label label">Valor Total</label>
+                                  <input type="number" class="form-control btn-borders" [ngModel]="amount*unitPrice" placeholder="Se calcula automaticamente" formControlName="totalPrice" readonly>
                                 </div>
                             </div>
                             <button class="btn btn-borders" style="width: 100%; margin-top: 20px; margin-bottom: 20px; background-color: rgb(127, 81, 255); color: white;" (click)="addBuy()">Agregar</button>
@@ -45,6 +49,7 @@
             <th scope="col">Nº Factura</th>
             <th scope="col">Comprador</th>
             <th scope="col">Nombre Producto</th>
+            <th scope="col">Proveedor</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Valor Unitario</th>
             <th scope="col">Valor Total</th>
@@ -56,12 +61,13 @@
             <td>{{item.billNumber}}</td>
             <td>{{item.buyer}}</td>
             <td>{{item.productName}}</td>
+            <td>{{item.provider}}</td>
             <td>{{item.amount}}</td>
             <td>{{item.unitPrice}}</td>
             <td>{{item.totalPrice}}</td>
             <td>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#editCompra" (click)="select(item.id.id, item.productName, item.amount, item.unitPrice, item.totalPrice)">Editar</button>
+                    <button type="button" class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#editCompra" (click)="select(item.id.id, item.productName, item.amount, item.unitPrice, item.totalPrice, item.provider)">Editar</button>
                     <button type="button" class="btn btn-danger" (click)="deleteBuy(item.id.id)">Eliminar</button>
                 </div>
             </td>

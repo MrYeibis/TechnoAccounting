@@ -22,7 +22,8 @@ export class ComprasComponent implements OnInit {
     amount: new FormControl('', [Validators.required]),
     unitPrice: new FormControl('', [Validators.required]),
     totalPrice: new FormControl('', [Validators.required]),
-    buyer: new FormControl('', [Validators.required])
+    buyer: new FormControl('', [Validators.required]),
+    provider: new FormControl('', [Validators.required]),
   })
 
   editarForm = new FormGroup({
@@ -51,11 +52,12 @@ export class ComprasComponent implements OnInit {
     setTimeout(() => {this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/buys');}, 200);
   }
 
-  select(id: string, productName: string, amount: number, unitPrice: number, totalPrice: number) {
+  select(id: string, productName: string, amount: number, unitPrice: number, totalPrice: number, provider:string) {
     this.crud.id = id;
     this.crud.productName = productName;
     this.crud.amount = amount;
     this.crud.unitPrice = unitPrice;
     this.crud.totalPrice = totalPrice;
+    this.crud.provider = provider;
   }
 }

@@ -1,5 +1,5 @@
 <div class="container">
-    <h4 class="principal-title">Informes</h4>
+    <h4 class="principal-title">Reportes</h4>
     <hr class="purple-bar">
     <div class="box">
         <div class="container">
@@ -16,11 +16,11 @@
                             <input type="text" class="form-control btn-borders" style="margin-bottom: 20px;" [ngModel]="employee" placeholder="El nombre del vendedor se asigna automaticamente" formControlName="accountant" readonly>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Fecha del informe</label>
+                                    <label class="form-label label">Fecha del reporte</label>
                                     <input type="month" class="form-control btn-borders" formControlName="date">
                                 </div>
                                 <div class="col">
-                                    <input type="file" class="form-control choose-file" accept=" .pdf" style="margin-top: 20px;" (change)="getEvent($event)">
+                                    <input type="file" class="form-control choose-file" accept=" .pdf" style="margin-top: 28px;" (change)="getEvent($event)">
                                 </div>
                             </div>
                             <button class="btn btn-borders" style="width: 100%; margin-top: 20px; margin-bottom: 20px; background-color: rgb(127, 81, 255); color: white;" (click)="uploadFile(this.event)" [disabled]="!this.new.valid">Agregar</button>
@@ -29,6 +29,14 @@
                   </div>
             </div>
         </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <button class="btn btn-success btn-borders w-100" (click)="exportAsExcelBuys()">Generar consulta compras</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-success btn-borders w-100" (click)="exportAsExcelSells()">Generar consulta ventas</button>
+      </div>
     </div>
     <table class="table">
         <thead>

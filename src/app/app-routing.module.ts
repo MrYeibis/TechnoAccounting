@@ -34,7 +34,7 @@ const routes: Routes = [
     {path: 'ventas', component:VentasComponent},
     {path: 'compras', component:ComprasComponent},
     {path: 'contaduria', children: [
-      {path: 'informes',  component:InformesComponent},
+      {path: 'reportes',  component:InformesComponent},
     ]},
 
   ]}

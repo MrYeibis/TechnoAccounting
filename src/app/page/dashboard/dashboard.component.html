@@ -53,9 +53,9 @@
                     <span>Compras</span>
                 </button>
 
-                <button mat-button class="menu-button" routerLink="/dashboard/contaduria/informes" routerLinkActive="active" (click)="this.crud.codeE = codeE">
+                <button mat-button class="menu-button" routerLink="/dashboard/contaduria/reportes" routerLinkActive="active" (click)="this.crud.codeE = codeE">
                   <mat-icon>paid</mat-icon>
-                  <span>Informes</span>
+                  <span>Reportes</span>
                 </button>
                 
             </div>
@@ -93,18 +93,13 @@
 
               <mat-divider></mat-divider>
 
-              <button mat-button class="menu-button" routerLink="/dashboard/contaduria/informes" routerLinkActive="active" (click)="this.crud.codeE = codeE">
+              <button mat-button class="menu-button" routerLink="/dashboard/contaduria/reportes" routerLinkActive="active" (click)="this.crud.codeE = codeE">
                   <mat-icon>paid</mat-icon>
-                  <span>Informes</span>
+                  <span>Reportes</span>
               </button>
           </div>
 
             <mat-divider></mat-divider>
-
-            <div class="businessMoney justify-content-center d-flex flex-column align-items-center text-center position-absolute bottom-0">
-              <h4 class="businessMoney-Title">Saldo Empresa</h4>
-              <h2 class="businessMoney-Amount">${{businessMoney}}</h2>
-          </div>
 
             </mat-sidenav>
 
@@ -189,7 +184,7 @@
             </div>
             <div class="modal-body">
               <form [formGroup]="editarFormCompras">
-                <label class="form-label label">cOMPRADOR</label>
+                <label class="form-label label">Comprador</label>
                 <input type="text" class="form-control btn-borders" style="margin-bottom: 20px;" [ngModel]="employee" placeholder="El nombre del vendedor se asigna automaticamente" formControlName="buyer" readonly>
                 <div class="row">
                   <div class="col-md-6">
@@ -207,6 +202,8 @@
                     <input type="number" class="form-control" [ngModel]="amount*unitPrice" placeholder="Se calcula automaticamente" formControlName="totalPrice" readonly>
                   </div>
                 </div>
+                <label class="form-label label">Proveedor</label>
+                <input type="text" class="form-control btn-borders" style="margin-bottom: 20px;" placeholder="Nombre Proveedor" formControlName="provider">
               </form>
             </div>
             <div class="modal-footer">

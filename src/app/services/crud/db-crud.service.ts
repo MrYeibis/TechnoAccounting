@@ -13,6 +13,9 @@ export class DbCrudService {
   public data: any = [];
   private data$: Subject<any[]>;
 
+  public dataExcel: any = [];
+  private dataExcel$: Subject<any[]>;
+
   public businessMoney: any = [];
   private businessMoney$: Subject<any[]>;
 
@@ -33,10 +36,14 @@ export class DbCrudService {
   public amount: number = 0;
   public unitPrice: number = 0;
   public totalPrice: number = 0;
+  public provider: string = "";
 
   constructor(private db: Firestore, private notifications: HotToastService) {
     this.data = []
     this.data$ = new Subject();
+
+    this.data = []
+    this.dataExcel$ = new Subject();
 
     this.businessMoney = [];
     this.businessMoney$ = new Subject();
@@ -61,6 +68,8 @@ export class DbCrudService {
     })
   }
 
+  
+
   getBusinessMoney(where: string){
     const dbInstance = collection(this.db, where);
     getDocs(dbInstance)
@@ -83,8 +92,23 @@ export class DbCrudService {
     })
   }
 
+  getExcelData(where: string) {
+    const dbInstance = collection(this.db, where);
+    getDocs(dbInstance)
+    .then((response) => {
+      this.dataExcel = [...response.docs.map((item) => {
+        return { ...item.data(), id: item}
+      })]
+      this.dataExcel$.next(this.dataExcel);
+    })
+  }
+
   getData$(): Observable<any[]>{
     return this.data$.asObservable();
+  }
+
+  getExcelData$(): Observable<any[]>{
+    return this.dataExcel$.asObservable();
   }
 
   getBusinessMoney$(): Observable<any[]>{
