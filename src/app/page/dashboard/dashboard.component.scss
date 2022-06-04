@@ -112,18 +112,12 @@ mat-divider{
     background-color: rgb(127, 81, 255);
 }
 
-.businessMoney{
-    margin-left: 16px;
+.btn-borders{
+    border-radius: 20px;
+    border: 1px solid rgb(127, 81, 255);
 }
 
-.businessMoney-Title{
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-bottom: 0;
+.borders{
+    border-radius: 20px;
 }
 
-.businessMoney-Amount{
-    margin-top: 0;
-    font-size: 1rem;
-    font-weight: bold;
-}

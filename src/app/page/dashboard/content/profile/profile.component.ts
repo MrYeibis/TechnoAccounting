@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getAuth } from '@angular/fire/auth';
-import { FormControl, FormGroup } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { DbCrudService } from 'src/app/services/crud/db-crud.service';
 import { StorageService } from '../../../../services/storage/storage.service';
 
 @Component({
@@ -24,7 +22,7 @@ export class ProfileComponent implements OnInit {
   widthNumber:number = 0;
   widthProgress:string = "";
 
-  constructor(private storageService: StorageService, private auth: AuthService, private notifications: HotToastService) { }
+  constructor(private storageService: StorageService, public auth: AuthService, private notifications: HotToastService) { }
 
   ngOnInit(): void {
   }

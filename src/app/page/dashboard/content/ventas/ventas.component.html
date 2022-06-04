@@ -61,8 +61,8 @@
                 <td>{{item.totalPrice}}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#editVenta" (click)="select(item.id.id, item.productName, item.amount, item.unitPrice, item.totalPrice)">Editar</button>
-                        <button type="button" class="btn btn-danger" (click)="deleteSell(item.id.id)">Eliminar</button>
+                        <button type="button" class="btn btn-purple" style="border-top-left-radius: 20px; border-bottom-left-radius: 20px;" data-bs-toggle="modal" data-bs-target="#editVenta" (click)="select(item.id.id, item.productName, item.amount, item.unitPrice, item.totalPrice)">Editar</button>
+                        <button type="button" class="btn btn-danger" style="border-top-right-radius: 20px; border-bottom-right-radius: 20px;" (click)="deleteSell(item.id.id)">Eliminar</button>
                     </div>
                 </td>
               </tr>

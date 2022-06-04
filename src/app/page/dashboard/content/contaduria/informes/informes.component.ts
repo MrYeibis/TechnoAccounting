@@ -29,7 +29,8 @@ export class InformesComponent implements OnInit {
   new = new FormGroup({
     accountant: new FormControl('', [Validators.required]),
     date: new FormControl('', [Validators.required]),
-    urlFile: new FormControl('', [Validators.required])
+    urlFile: new FormControl('', [Validators.required]),
+    type: new FormControl('', [Validators.required]),
   })
 
 
@@ -61,7 +62,7 @@ export class InformesComponent implements OnInit {
     reader.onloadend = () => {
       setTimeout(()=>{this.notifications.info('Subiendo el informe, espere un momento')}, 300) 
       this.file.push(reader.result);
-      this.storageService.uploadFile(Date(), reader.result).then(urlFile => {
+      this.storageService.uploadFile('Reporte ' + Date(), reader.result).then(urlFile => {
         this.new.controls['urlFile'].setValue(urlFile);
         this.crud.addData(this.new.value, '/business/' + this.crud.codeE + '/reports');
         setTimeout(()=>{this.crud.getData('accountant', this.crud.employee, '/business/' + this.crud.codeE + '/reports')}, 200)
@@ -96,7 +97,8 @@ export class InformesComponent implements OnInit {
         finalData.push({
           NºFactura: item.billNumber,
           Comprador: item.buyer,
-          NombreProducto: item.productName,
+          Proveedor: item.provider,
+          Producto: item.productName,
           Cantidad: item.amount,
           ValorUnitario: item.unitPrice,
           ValorTotal: item.totalPrice
@@ -105,7 +107,7 @@ export class InformesComponent implements OnInit {
       this.dataExcel = finalData;},1500)
     setTimeout(()=>{
       const date = new Date();
-      this.exportToExcel(this.dataExcel, 'Reporte de Compras Generado En La Fecha' + date.getDay + "/" + date.getMonth + "/" + date.getFullYear);
+      this.exportToExcel(this.dataExcel, 'Reporte de Compras Generado En La Fecha ' + date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear());
     },2000);
   }
 
@@ -116,8 +118,8 @@ export class InformesComponent implements OnInit {
       for(let item of this.dataExcel){
         finalData.push({
           NºFactura: item.billNumber,
-          Vendedor: item.buyer,
-          NombreProducto: item.productName,
+          Vendedor: item.seller,
+          Producto: item.productName,
           Cantidad: item.amount,
           ValorUnitario: item.unitPrice,
           ValorTotal: item.totalPrice
@@ -126,7 +128,7 @@ export class InformesComponent implements OnInit {
       this.dataExcel = finalData;},1500)
     setTimeout(()=>{
       const date = new Date();
-      this.exportToExcel(this.dataExcel, 'Reporte de Compras ' + date.getDay + "/" + date.getMonth + "/" + date.getFullYear);
+      this.exportToExcel(this.dataExcel, 'Reporte de Ventas Generado En La Fecha ' + date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear());
     },2000);
   }
 

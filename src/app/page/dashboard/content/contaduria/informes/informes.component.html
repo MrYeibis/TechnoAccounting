@@ -11,7 +11,7 @@
             <div>
                   <div class="collapse" id="collapseForm">
                     <div class="card card-body mb-3" >
-                        <form [formGroup]="new" >
+                        <form [formGroup]="new">
                             <label class="form-label label">Contador</label>
                             <input type="text" class="form-control btn-borders" style="margin-bottom: 20px;" [ngModel]="employee" placeholder="El nombre del vendedor se asigna automaticamente" formControlName="accountant" readonly>
                             <div class="row">
@@ -20,8 +20,13 @@
                                     <input type="month" class="form-control btn-borders" formControlName="date">
                                 </div>
                                 <div class="col">
-                                    <input type="file" class="form-control choose-file" accept=" .pdf" style="margin-top: 28px;" (change)="getEvent($event)">
+                                  <label class="form-label label">Tipo de reporte</label>
+                                  <select class="form-select btn-borders" formControlName="type">
+                                    <option value="Compras">Compras</option>
+                                    <option value="Ventas">Ventas</option>
+                                  </select>
                                 </div>
+                                <input type="file" class="form-control choose-file" accept=" .pdf" style="margin-top: 28px; margin-left: 10px; margin-right: 10px;" (change)="getEvent($event)">
                             </div>
                             <button class="btn btn-borders" style="width: 100%; margin-top: 20px; margin-bottom: 20px; background-color: rgb(127, 81, 255); color: white;" (click)="uploadFile(this.event)" [disabled]="!this.new.valid">Agregar</button>
                         </form>
@@ -32,10 +37,10 @@
     </div>
     <div class="row mt-4">
       <div class="col-md-6">
-        <button class="btn btn-success btn-borders w-100" (click)="exportAsExcelBuys()">Generar consulta compras</button>
+        <button class="btn btn-success btn-borders w-100" (click)="exportAsExcelBuys()" style="border-radius: 20px">Generar consulta compras</button>
       </div>
       <div class="col">
-        <button class="btn btn-success btn-borders w-100" (click)="exportAsExcelSells()">Generar consulta ventas</button>
+        <button class="btn btn-success btn-borders w-100" (click)="exportAsExcelSells()" style="border-radius: 20px">Generar consulta ventas</button>
       </div>
     </div>
     <table class="table">
@@ -52,7 +57,7 @@
             <td>{{item.date}}</td>
             <td>
                 <div class="btn-group" role="group">
-                    <a type="button" class="btn btn-purple" href="{{item.urlFile}}" target="_blank">Descargar</a>
+                    <a type="button" class="btn btn-purple btn-borders" href="{{item.urlFile}}" target="_blank">Descargar</a>
                 </div>
             </td>
           </tr>

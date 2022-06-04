@@ -14,20 +14,22 @@ import { UsersComponent } from './page/dashboard/content/administration/users/us
 import { VentasComponent } from './page/dashboard/content/ventas/ventas.component';
 import { ComprasComponent } from './page/dashboard/content/compras/compras.component';
 import { InformesComponent } from './page/dashboard/content/contaduria/informes/informes.component';
+import { LandingGuard } from './guards/landing/landing.guard';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'landing', pathMatch: 'full'},
-  {path: 'verificate', component: VerificateComponent},
+  {path: '', redirectTo: 'verificate', pathMatch: 'full'},
+  {path: 'verificate', component: VerificateComponent, canActivate: [LandingGuard]},
   {path: 'admin', redirectTo: 'admin/inicio', pathMatch: 'full'},
   {path: 'dashboard', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'landing', component:LandingComponent},
+  {path: 'landing', component:LandingComponent, },
   {path: 'login', component:LoginComponent},
   {path: 'register', component:RegisterComponent},
   {path: 'admin', component:AdminComponent, children: [
     {path: 'inicio', component:MainComponent},
     {path: 'empresas', component:EmpresasComponent}
   ]},
-  {path: 'dashboard', component:DashboardComponent, children: [
+  {path: 'dashboard', component:DashboardComponent, canActivate:[AuthGuard], children: [
     {path: 'inicio', component:MainDashboardComponent},
     {path: 'perfil', component:ProfileComponent},
     {path: 'administration/users', component:UsersComponent},

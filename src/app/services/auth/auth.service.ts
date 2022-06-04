@@ -3,19 +3,21 @@ import { Auth, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { authState } from 'rxfire/auth';
 import { from, Observable, Subject } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  currentUser$ = authState(this.auth);
+
   userFire:any;
 
   profileImage:any = "";
   profileImage$: Subject<any>
 
-  constructor(private auth: Auth) {
+  constructor(private auth: Auth, private notifications: HotToastService) {
     this.profileImage = "";
     this.profileImage$ = new Subject();
 
@@ -41,9 +43,14 @@ export class AuthService {
     return from(this.auth.signOut());
   }
 
+  delete(){
+    this.auth.currentUser?.delete().then(()=> {
+      this.notifications.success("Usuario eliminado satisfactoriamente");
+    })
+  }
+
   register(email: string, password: string) {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
-
   }
 
   resetPassword(email: string){

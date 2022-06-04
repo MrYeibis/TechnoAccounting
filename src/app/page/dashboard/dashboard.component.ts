@@ -47,6 +47,10 @@ export class DashboardComponent implements OnInit {
     totalPrice: new FormControl('', [Validators.required])
   })
 
+  deleteForm = new FormGroup({
+    confirmation: new FormControl('', [Validators.required])
+  })
+
   editarFormCompras = new FormGroup({
     buyer: new FormControl('', [Validators.required]),
     productName: new FormControl('', [Validators.required]),
@@ -57,7 +61,7 @@ export class DashboardComponent implements OnInit {
   })
 
   constructor(private observer: BreakpointObserver, public router: Router, public crud: DbCrudService, 
-    private notifications: HotToastService, private auth: AuthService) {
+    private notifications: HotToastService, public auth: AuthService) {
     }
 
   ngOnInit(): void {
@@ -129,5 +133,13 @@ export class DashboardComponent implements OnInit {
   changeBuy(){
     this.crud.updateData(this.crud.id, this.editarFormCompras.value, '/business/' + this.crud.codeE + '/buys');
     setTimeout(() => {this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/buys');}, 200)
+  }
+
+  confirmationDelete() {
+    if(this.deleteForm.controls['confirmation'].value == 'CONFIRMAR'){
+      return false;
+    } else {
+      return true;
+    }
   }
 }
