@@ -39,6 +39,11 @@ export class DashboardComponent implements OnInit {
     rango: new FormControl('', Validators.compose([Validators.required, Validators.minLength(2)]))
   })
 
+  eliminarFormUser = new FormGroup({
+    rango: new FormControl('', Validators.compose([Validators.required, Validators.minLength(2)])),
+    codeE: new FormControl('', Validators.compose([Validators.required, Validators.minLength(2)]))
+  })
+
   editarFormVentas = new FormGroup({
     seller: new FormControl('', [Validators.required]),
     productName: new FormControl('', [Validators.required]),
@@ -70,6 +75,7 @@ export class DashboardComponent implements OnInit {
       this.data = serviceData;
       for(let item of this.data){
         if(this.email == ''){
+          this.crud.idDelete = item.id.id;
           this.email = item.email
           this.name = item.name;
           this.surname = item.surname;
@@ -141,5 +147,12 @@ export class DashboardComponent implements OnInit {
     } else {
       return true;
     }
+  }
+
+  deleteUser() {
+    this.eliminarFormUser.controls['rango'].setValue('Eliminado');
+    this.eliminarFormUser.controls['codeE'].setValue('Eliminado');
+    this.crud.updateData(this.crud.idUser, this.eliminarFormUser.value, '/users');
+    setTimeout(() => {this.crud.getData('codeE', this.crud.codeE, '/users');}, 200);
   }
 }

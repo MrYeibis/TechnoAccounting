@@ -46,8 +46,16 @@ export class InformesComponent implements OnInit {
       this.dataExcel = serviceData;
     })
 
-    this.crud.getData('accountant', this.crud.employee, '/business/' + this.crud.codeE + '/reports');
+    this.getData();
     this.employee = this.crud.employee;
+  }
+
+  getData(){
+    if(this.crud.rank == "Administrador"){
+      this.crud.getAllData('/business/' + this.crud.codeE + '/reports');
+    } else {
+      this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/reports');
+    }
   }
 
   getEvent(event: any){

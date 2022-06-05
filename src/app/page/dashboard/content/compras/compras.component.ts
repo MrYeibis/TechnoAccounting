@@ -37,8 +37,16 @@ export class ComprasComponent implements OnInit {
       this.data = serviceData;
       console.log(this.data);
     })
-    this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/buys');
+    this.getData();
     this.employee = this.crud.employee;
+  }
+
+  getData(){
+    if(this.crud.rank == "Administrador"){
+      this.crud.getAllData('/business/' + this.crud.codeE + '/buys');
+    } else {
+      this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/buys');
+    }
   }
 
   addBuy(){

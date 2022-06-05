@@ -36,8 +36,16 @@ export class VentasComponent implements OnInit {
       this.data = serviceData;
       console.log(this.data);
     })
-    this.crud.getData('seller', this.crud.employee, '/business/' + this.crud.codeE + '/sells');
+    this.getData();
     this.employee = this.crud.employee;
+  }
+
+  getData(){
+    if(this.crud.rank == "Administrador"){
+      this.crud.getAllData('/business/' + this.crud.codeE + '/sells');
+    } else {
+      this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/sells');
+    }
   }
 
   addSell(){

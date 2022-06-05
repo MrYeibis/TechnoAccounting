@@ -4,6 +4,8 @@ import { createUserWithEmailAndPassword, inMemoryPersistence } from 'firebase/au
 import { authState } from 'rxfire/auth';
 import { from, Observable, Subject } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
+import { DbCrudService } from '../crud/db-crud.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,7 @@ export class AuthService {
   profileImage:any = "";
   profileImage$: Subject<any>
 
-  constructor(private auth: Auth, private notifications: HotToastService) {
+  constructor(private auth: Auth, private router: Router, private crud: DbCrudService) {
     this.profileImage = "";
     this.profileImage$ = new Subject();
 
@@ -43,9 +45,10 @@ export class AuthService {
     return from(this.auth.signOut());
   }
 
-  delete(){
+  delete(id: string){
     this.auth.currentUser?.delete().then(()=> {
-      this.notifications.success("Usuario eliminado satisfactoriamente");
+      this.crud.deleteData(id, '/users')
+      this.router.navigate(['/login']);
     })
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DbCrudService } from 'src/app/services/crud/db-crud.service';
 
 @Component({
@@ -28,8 +29,4 @@ export class UsersComponent implements OnInit {
     this.crud.rankUser = rank
   }
 
-  deleteUser(id:string) {
-    this.crud.deleteData(id, '/users');
-    setTimeout(() => {this.crud.getData('codeE', this.crud.codeE, '/users' );}, 200);
-  }
 }

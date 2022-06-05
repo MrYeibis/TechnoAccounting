@@ -19,7 +19,7 @@
                 <td>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn" style="background-color: rgb(127, 81, 255); color: white; border-top-left-radius: 20px; border-bottom-left-radius: 20px;;" data-bs-toggle="modal" data-bs-target="#editUser" (click)="select(item.id.id, item.name, item.surname, item.rango)">Editar</button>
-                        <button type="button" class="btn btn-danger" style="border-top-right-radius: 20px; border-bottom-right-radius: 20px;" (click)="deleteUser(item.id.id)">Eliminar</button>
+                        <button type="button" class="btn btn-danger" style="border-top-right-radius: 20px; border-bottom-right-radius: 20px;" data-bs-toggle="modal" data-bs-target="#deleteUserConfirmation" (click)="select(item.id.id, item.name, item.surname, item.rango)">Eliminar</button>
                     </div>
                 </td>
               </tr>

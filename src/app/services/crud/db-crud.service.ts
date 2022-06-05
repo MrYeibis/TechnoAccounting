@@ -22,6 +22,7 @@ export class DbCrudService {
   public codeE: any = "";
 
   public id: string = "";
+  public idDelete: string = "";
   public name: string = "";
   public surname: string = "";
   public rank: string = "";
@@ -67,8 +68,6 @@ export class DbCrudService {
       this.data$.next(this.data);
     })
   }
-
-  
 
   getBusinessMoney(where: string){
     const dbInstance = collection(this.db, where);

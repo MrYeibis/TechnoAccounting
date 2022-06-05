@@ -5,7 +5,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from '../services/auth/auth.service';
 import { DbCrudService } from '../services/crud/db-crud.service';
 import { Auth } from '@angular/fire/auth';
-import { browserLocalPersistence, inMemoryPersistence } from 'firebase/auth';
+import { browserLocalPersistence } from 'firebase/auth';
 
 @Component({
   selector: 'login',

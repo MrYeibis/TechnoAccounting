@@ -221,7 +221,7 @@
         </div>
       </div>
 
-      <!-- Modal Ventas -->
+      <!-- Eliminar Cuenta -->
       <div class="modal fade" id="deleteConfirmation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -236,7 +236,28 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary borders" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-danger borders"  data-bs-dismiss="modal" [disabled]="confirmationDelete()" (click)="this.auth.delete()">ELIMINAR</button>
+              <button type="button" class="btn btn-danger borders"  data-bs-dismiss="modal" [disabled]="confirmationDelete()" (click)="this.auth.delete(this.crud.idDelete)">ELIMINAR</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eliminar Cuenta Admin -->
+      <div class="modal fade" id="deleteUserConfirmation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Eliminar Cuenta</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="deleteForm">
+                <input type="text" class="form-control btn-borders" style="margin-bottom: 0px;" placeholder='Escribe "CONFIRMAR" si deseas eliminar el usuario' formControlName="confirmation">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary borders" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger borders"  data-bs-dismiss="modal" [disabled]="confirmationDelete()" (click)="this.deleteUser()">ELIMINAR</button>
             </div>
           </div>
         </div>
