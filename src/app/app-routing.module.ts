@@ -16,6 +16,7 @@ import { ComprasComponent } from './page/dashboard/content/compras/compras.compo
 import { InformesComponent } from './page/dashboard/content/contaduria/informes/informes.component';
 import { LandingGuard } from './guards/landing/landing.guard';
 import { AuthGuard } from './guards/auth/auth.guard';
+import { AdminGuard } from './guards/admin/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'verificate', pathMatch: 'full'},
@@ -25,7 +26,7 @@ const routes: Routes = [
   {path: 'landing', component:LandingComponent, },
   {path: 'login', component:LoginComponent},
   {path: 'register', component:RegisterComponent},
-  {path: 'admin', component:AdminComponent, children: [
+  {path: 'admin', component:AdminComponent, canActivate: [AdminGuard], children: [
     {path: 'inicio', component:MainComponent},
     {path: 'empresas', component:EmpresasComponent}
   ]},

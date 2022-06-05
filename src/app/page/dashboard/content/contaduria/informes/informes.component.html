@@ -5,7 +5,7 @@
         <div class="container">
             <p class="text-center mt-4">
                 <a class="fw-1 collapseTitle" data-bs-toggle="collapse" href="#collapseForm" role="button" aria-expanded="false" aria-controls="collapseForm">
-                    Agregar Informe
+                    Agregar Reporte
                     </a>
             </p>
             <div>
@@ -26,7 +26,7 @@
                                     <option value="Ventas">Ventas</option>
                                   </select>
                                 </div>
-                                <input type="file" class="form-control choose-file" accept=" .pdf" style="margin-top: 28px; margin-left: 10px; margin-right: 10px;" (change)="getEvent($event)">
+                                <input type="file" class="form-control choose-file" accept=" .docx, .xlsx, .pdf, .png" style="margin-top: 28px; margin-left: 10px; margin-right: 10px;" (change)="getEvent($event)">
                             </div>
                             <button class="btn btn-borders" style="width: 100%; margin-top: 20px; margin-bottom: 20px; background-color: rgb(127, 81, 255); color: white;" (click)="uploadFile(this.event)" [disabled]="!this.new.valid">Agregar</button>
                         </form>
@@ -47,13 +47,17 @@
         <thead>
           <tr>
             <th scope="col">Contador</th>
-            <th scope="col">Año - Mes del Informe</th>
+            <th scope="col">Tipo De Reporte</th>
+            <th scope="col">Fecha de subida del reporte (Día - Mes - Año)</th>
+            <th scope="col">Fecha a la que corresponde el reporte</th>
             <th scope="col">Descarga</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of data">
             <td>{{item.accountant}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.uploadedDate}}</td>
             <td>{{item.date}}</td>
             <td>
                 <div class="btn-group" role="group">

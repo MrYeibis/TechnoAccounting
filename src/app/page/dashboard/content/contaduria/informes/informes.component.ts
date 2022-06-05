@@ -5,7 +5,6 @@ import { DbCrudService } from 'src/app/services/crud/db-crud.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
-import { DateAdapter } from '@angular/material/core';
 const EXCEL_TYPE =
 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8';
 const EXCEL_EXT = '.xlsx';
@@ -29,6 +28,7 @@ export class InformesComponent implements OnInit {
   new = new FormGroup({
     accountant: new FormControl('', [Validators.required]),
     date: new FormControl('', [Validators.required]),
+    uploadedDate: new FormControl(''),
     urlFile: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
   })
@@ -56,14 +56,20 @@ export class InformesComponent implements OnInit {
   }
 
   uploadFile(event: any) {
+    let type = '';
     let file = event.target.files
     let reader = new FileReader();
+    for(let item of file){
+       type = item.name.split('.')[1];
+    }
     reader.readAsDataURL(file[0]);
     reader.onloadend = () => {
       setTimeout(()=>{this.notifications.info('Subiendo el informe, espere un momento')}, 300) 
       this.file.push(reader.result);
-      this.storageService.uploadFile('Reporte ' + Date(), reader.result).then(urlFile => {
+      this.storageService.uploadFile('Reporte ' + Date() + '.' + type, reader.result).then(urlFile => {
+        const date = new Date();
         this.new.controls['urlFile'].setValue(urlFile);
+        this.new.controls['uploadedDate'].setValue(date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear());
         this.crud.addData(this.new.value, '/business/' + this.crud.codeE + '/reports');
         setTimeout(()=>{this.crud.getData('accountant', this.crud.employee, '/business/' + this.crud.codeE + '/reports')}, 200)
       }).catch((err) => {

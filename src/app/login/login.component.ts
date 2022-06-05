@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from '../services/auth/auth.service';
 import { DbCrudService } from '../services/crud/db-crud.service';
+import { Auth } from '@angular/fire/auth';
+import { browserLocalPersistence, inMemoryPersistence } from 'firebase/auth';
 
 @Component({
   selector: 'login',
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
   public popup: boolean = false;
 
   constructor(private authService: AuthService, private notifications: HotToastService, private router: Router,
-    private crud: DbCrudService) { }
+    private crud: DbCrudService, private auth: Auth) { }
 
   ngOnInit(): void {
   }
@@ -32,23 +34,25 @@ export class LoginComponent implements OnInit {
   
   login(){
     const { email, password } = this.LoginForm.value;
-    this.authService.login(email, password).pipe(
-      this.notifications.observe({
-        success: 'Inicio de sesión exitoso',
-        loading: 'Iniciando sesión',
-        error: 'Ha occurido un error'
+    this.auth.setPersistence(browserLocalPersistence).then(() => {
+      this.authService.login(email, password).pipe(
+        this.notifications.observe({
+          success: 'Inicio de sesión exitoso',
+          loading: 'Iniciando sesión',
+          error: 'Ha occurido un error'
+        })
+      ).subscribe(() => {
+        if(email == "yeibisrojas@hotmail.com"){
+          this.router.navigate(['/admin/inicio']);
+        }else if(email == "fersungfloo@gmail.com"){
+          this.router.navigate(['/admin/inicio']);
+        }else if(email == "angiesofiaespinosa@gmail.com"){
+          this.router.navigate(['/admin/inicio']);
+        }else{
+          this.router.navigate(['/dashboard/inicio']);
+        }
       })
-    ).subscribe(() => {
-      if(email == "yeibisrojas@hotmail.com"){
-        this.router.navigate(['/admin/inicio']);
-      }else if(email == "fersungfloo@gmail.com"){
-        this.router.navigate(['/admin/inicio']);
-      }else if(email == "angiesofiaespinosa@gmail.com"){
-        this.router.navigate(['/admin/inicio']);
-      }else{
-        this.router.navigate(['/dashboard/inicio']);
-      }
-    })
+    });
   }
 
   reset(){

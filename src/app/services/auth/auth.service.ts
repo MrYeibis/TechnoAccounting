@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, sendPasswordResetEmail, updateProfile, getAuth} from '@angular/fire/auth';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, inMemoryPersistence } from 'firebase/auth';
 import { authState } from 'rxfire/auth';
 import { from, Observable, Subject } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
