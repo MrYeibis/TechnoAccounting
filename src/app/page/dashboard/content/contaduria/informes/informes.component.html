@@ -52,8 +52,7 @@
           <tr>
             <th scope="col">Contador</th>
             <th scope="col">Tipo De Reporte</th>
-            <th scope="col">Fecha de subida del reporte (Día - Mes - Año)</th>
-            <th scope="col">Fecha a la que corresponde el reporte</th>
+            <th scope="col">Fecha A La Que Corresponde El Reporte (Año - mes)</th>
             <th scope="col">Descarga</th>
           </tr>
         </thead>
@@ -61,7 +60,6 @@
           <tr *ngFor="let item of data">
             <td>{{item.accountant}}</td>
             <td>{{item.type}}</td>
-            <td>{{item.uploadedDate}}</td>
             <td>{{item.date}}</td>
             <td>
                 <div class="btn-group" role="group">
