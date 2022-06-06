@@ -53,7 +53,7 @@ export class DbCrudService {
   addData(value: any, buscar: string){
     const dbInstance = collection(this.db, buscar);
     addDoc(dbInstance, value).then(() => {
-      this.notifications.success('Se Registro Correctamente');
+      this.notifications.success('Se Registró Correctamente');
     }).catch((err) => {
       this.notifications.error('Error en el registro');
     });
@@ -116,7 +116,7 @@ export class DbCrudService {
   updateData(id: string, changedata: any, buscar: string){
     const dataToUpdate = doc(this.db, buscar, id);
     updateDoc(dataToUpdate,changedata).then(() => {
-      this.notifications.success('Se Actualizo Correctamente');
+      this.notifications.success('Se Actualizó Correctamente');
     }).catch((err) => {
       this.notifications.error('Error en la actualización');
     });
@@ -125,7 +125,7 @@ export class DbCrudService {
   deleteData(id: string, buscar: string){
     const dataToDelete = doc(this.db, buscar, id);
     deleteDoc(dataToDelete).then(() => {
-      this.notifications.success('Se Elimino Correctamente');
+      this.notifications.success('Se Eliminó Correctamente');
     }).catch((err) => {
       this.notifications.error('Error en el proceso');
     });
