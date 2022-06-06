@@ -12,15 +12,24 @@ export class EmpresasComponent implements OnInit {
   public id: string = "";
   public name: string= "";
   public data: any = [];
+  public adminData: any = [];
 
   new = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    businessMoney: new FormControl(0)
   })
 
   editarForm = new FormGroup({
     name: new FormControl('', Validators.compose([Validators.required, Validators.minLength(2)]))
   })
+
+  selectAdminForm = new FormGroup({
+    idNewAdmin: new FormControl('', Validators.required),
+  })
+
+  rankAdminForm = new FormGroup({
+    rango: new FormControl('Administrador'),
+  })
+
 
   constructor(public crud: DbCrudService) {
     this.crud.getAllData('business');
@@ -29,6 +38,10 @@ export class EmpresasComponent implements OnInit {
   ngOnInit(): void {
     this.crud.getData$().subscribe( serviceData => {
       this.data = serviceData;
+    }) 
+
+    this.crud.getAdminData$().subscribe( serviceData => {
+      this.adminData = serviceData;
     }) 
   }
 
@@ -51,5 +64,9 @@ export class EmpresasComponent implements OnInit {
   editar(id: string){
     this.crud.updateData(id, this.editarForm.value, '/business');
     this.crud.getAllData('business');
+  }
+
+  selectAdmin(){
+    this.crud.updateData(this.selectAdminForm.controls['idNewAdmin'].value, this.rankAdminForm.value, '/users');
   }
 }

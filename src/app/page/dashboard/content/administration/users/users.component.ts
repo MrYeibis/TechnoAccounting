@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DbCrudService } from 'src/app/services/crud/db-crud.service';
 
 @Component({
@@ -11,13 +10,14 @@ export class UsersComponent implements OnInit {
 
   public data: any = [];
   public codeE: any = "";
+  public dataHere: boolean = false;
 
-  constructor(private crud: DbCrudService) {}
+  constructor(public crud: DbCrudService) {}
   
   ngOnInit(): void {
     this.crud.getData$().subscribe( serviceData => {
       this.data = serviceData;
-      console.log(this.data);
+      this.dataHere = true;
     })
     this.crud.getData('codeE', this.crud.codeE, '/users' );
   }

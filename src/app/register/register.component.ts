@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
           error: 'Ha occurido un error'
         })
       ).subscribe(() => {
+        this.notifications.info('Registrando, espere un momento');
         this.authService.login(this.RegisterForm.controls['email'].value, this.RegisterForm.controls['password'].value)
         this.authService.updateProfile(getAuth().currentUser, '', 'https://firebasestorage.googleapis.com/v0/b/techno-accounting.appspot.com/o/users%2Favatar-defecto.png?alt=media&token=f9d84415-8613-4bae-b9f3-ecefd04e7af4')
         this.authService.logout();
@@ -75,7 +76,7 @@ export class RegisterComponent implements OnInit {
         this.toDbForm.controls['email'].setValue(this.RegisterForm.controls['email'].value);
         this.toDbForm.controls['codeE'].setValue(this.RegisterForm.controls['codeE'].value);
         this.crud.addData(this.toDbForm.value, "/users")
-        this.router.navigate(['/login']);
+        setTimeout(()=> {this.router.navigate(['/login']);}, 1000) 
       });
     }
 }

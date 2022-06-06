@@ -40,7 +40,7 @@
           </table>
     </div>
 </div>
-        <!-- Modal -->
+        <!-- Modal Nombre -->
         <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -50,13 +50,38 @@
               </div>
               <div class="modal-body">
                 <form [formGroup]="editarForm">
-                  <label class="form-label label" >Nuevo Nombre:</label>
+                  <label class="form-label label">Nuevo Nombre:</label>
                   <input type="text" class="form-control" placeholder="Nuevo Nombre Empresa" formControlName="name">
+                  <button type="button" class="btn btn-primary" style="margin-top: 20px;" data-bs-toggle="modal" data-bs-target="#selectAdmin" data-bs-dismiss="modal" (click)="this.crud.getAdminData('codeE', this.id, '/users' );">Seleccionar Administrador</button>
                 </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" (click)="editar(this.id)" data-bs-dismiss="modal" [disabled]="!this.editarForm.valid">Guardar Cambios</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Admin -->
+        <div class="modal fade" id="selectAdmin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Seleccionar administrador de : {{this.name}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="selectAdminForm">
+                  <label class="form-label label">Nuevo Administrador:</label>
+                  <select class="form-select text-space" formControlName="idNewAdmin">
+                    <option *ngFor="let item of adminData" value="{{item.id.id}}">{{item.name}} {{item.surname}}</option>
+                  </select>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="this.selectAdmin()" data-bs-dismiss="modal" [disabled]="!this.selectAdminForm">Guardar Cambios</button>
               </div>
             </div>
           </div>

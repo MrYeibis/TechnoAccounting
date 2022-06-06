@@ -1,8 +1,12 @@
-<div class="container">
+<body class="d-flex justify-content-center uploader-status align-items-center" style="margin-bottom: 20px;" *ngIf="this.dataHere == false">
+  <mat-spinner mode="indeterminate"></mat-spinner>
+</body>
+
+<div *ngIf="this.dataHere == true">
     <h4 class="principal-title">Compras</h4>
     <hr class="purple-bar">
-    <div class="box">
-        <div class="container">
+    <div class="box" style="padding-right: 20px; padding-left: 20px;">
+        <div>
             <p class="text-center mt-4">
                 <a class="fw-1 collapseTitle" data-bs-toggle="collapse" href="#collapseForm" role="button" aria-expanded="false" aria-controls="collapseForm">
                     Nueva Compra

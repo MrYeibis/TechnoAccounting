@@ -1,3 +1,7 @@
+.uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: rgb(127, 81, 255);
+}
+
 .principal-title{
     text-align: center;
     padding-top: 6vh;
@@ -21,10 +25,16 @@
     border-width: 1px;
     border-style: solid;
     border-color: gray;
-    border-radius: 7px 7px 7px 7px;
     background-color: rgb(127, 81, 255);
-    -moz-border-radius: 7px 7px 7px 7px;
-    -webkit-border-radius: 7px 7px 7px 7px;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+}
+
+.card{
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
 }
 
 .label{

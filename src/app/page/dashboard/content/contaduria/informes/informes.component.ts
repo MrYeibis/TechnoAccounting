@@ -22,6 +22,7 @@ export class InformesComponent implements OnInit {
   public unitPrice: number = 1;
   public employee: string = "";
   public event:any = "";
+  public dataHere: boolean = false;
 
   file:any = []
 
@@ -39,7 +40,7 @@ export class InformesComponent implements OnInit {
   ngOnInit(): void {
     this.crud.getData$().subscribe( serviceData => {
       this.data = serviceData;
-      console.log(this.data);
+      this.dataHere = true;
     })
 
     this.crud.getExcelData$().subscribe( serviceData => {

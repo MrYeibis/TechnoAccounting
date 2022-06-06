@@ -16,8 +16,8 @@ export class DbCrudService {
   public dataExcel: any = [];
   private dataExcel$: Subject<any[]>;
 
-  public businessMoney: any = [];
-  private businessMoney$: Subject<any[]>;
+  public adminData: any = [];
+  private adminData$: Subject<any[]>;
 
   public codeE: any = "";
 
@@ -46,8 +46,8 @@ export class DbCrudService {
     this.data = []
     this.dataExcel$ = new Subject();
 
-    this.businessMoney = [];
-    this.businessMoney$ = new Subject();
+    this.adminData = [];
+    this.adminData$ = new Subject();
   }
 
   addData(value: any, buscar: string){
@@ -69,15 +69,18 @@ export class DbCrudService {
     })
   }
 
-  getBusinessMoney(where: string){
-    const dbInstance = collection(this.db, where);
-    getDocs(dbInstance)
-    .then((response) => {
-      this.businessMoney = [...response.docs.map((item) => {
-        return { ...item.data(), id: item}
+  getAdminData( what: string, find: string, buscar: string){
+    const q = query(collection(this.db, buscar), where(what, '==', find))
+    getDocs(q).then((response) => {
+      this.adminData = [...response.docs.map((item) => {
+        return {...item.data(), id:item}
       })]
-      this.businessMoney$.next(this.businessMoney);
+      this.adminData$.next(this.adminData);
     })
+  }
+
+  getAdminData$(): Observable<any[]>{
+    return this.adminData$.asObservable();
   }
 
   getAllData(where: string) {
@@ -108,10 +111,6 @@ export class DbCrudService {
 
   getExcelData$(): Observable<any[]>{
     return this.dataExcel$.asObservable();
-  }
-
-  getBusinessMoney$(): Observable<any[]>{
-    return this.businessMoney$.asObservable();
   }
 
   updateData(id: string, changedata: any, buscar: string){

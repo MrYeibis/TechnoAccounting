@@ -43,12 +43,6 @@
     color: white;
 }
 
-img{
-    margin-left: 4vw;
-    height:30vh;
-    width:40%;
-}
-
 .right{
     height:100%;
     width:40%;
@@ -103,4 +97,16 @@ a{
 
 .space-between{
     margin-right: 10px;
+}
+
+.animated{
+    height: auto;
+    width: 18vw;
+}
+
+@media(max-width: 1280px){
+    .animated{
+        height: auto;
+        width: 30vw;
+    }
 }

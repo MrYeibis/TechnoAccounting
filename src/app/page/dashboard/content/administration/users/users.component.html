@@ -1,4 +1,8 @@
-<div class="container">
+<body class="d-flex justify-content-center uploader-status align-items-center" style="margin-bottom: 20px;" *ngIf="this.dataHere == false">
+  <mat-spinner mode="indeterminate"></mat-spinner>
+</body>
+
+<div *ngIf="this.dataHere == true">
     <div class="content">
         <h4 class="title">Gestión de Usuarios</h4>
         <hr>

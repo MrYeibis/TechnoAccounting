@@ -1,4 +1,3 @@
-
     <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
         <mat-icon *ngIf="!sidenav.opened">
             menu
@@ -10,7 +9,11 @@
 
     <mat-sidenav-container>
         <mat-sidenav #sidenav="matSidenav">
-                <div>
+                <div class="d-flex justify-content-center uploader-status" style="margin-bottom: 20px;" *ngIf="this.codeE == ''">
+                  <mat-spinner mode="indeterminate"></mat-spinner>
+                </div>
+
+                <div *ngIf="this.codeE != ''">
                     <img class="avatar mat-elevation-z8" src="{{profileImage}}"/>
                     <h4 class="name">{{name}} {{surname}}</h4>
                     <p class="designation">{{rank}}</p>

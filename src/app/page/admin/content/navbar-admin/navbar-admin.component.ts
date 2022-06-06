@@ -18,7 +18,7 @@ export class NavbarAdminComponent implements OnInit {
   logout(){
     this.authService.logout().pipe(
       this.notifications.observe({
-        success: 'Cerrado de Sesión Exitoso',
+        success: 'Sesión Finalizada Exitosamente',
         loading: 'Cerrando Sesión',
         error: 'Ha occurido un error'
       })

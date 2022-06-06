@@ -10,6 +10,7 @@ import { DbCrudService } from 'src/app/services/crud/db-crud.service';
 export class VentasComponent implements OnInit {
 
   public data: any = [];
+  public dataHere: boolean = false;
 
   public amount: number = 1;
   public unitPrice: number = 1;
@@ -34,7 +35,7 @@ export class VentasComponent implements OnInit {
   ngOnInit(): void {
     this.crud.getData$().subscribe( serviceData => {
       this.data = serviceData;
-      console.log(this.data);
+      this.dataHere = true;
     })
     this.getData();
     this.employee = this.crud.employee;

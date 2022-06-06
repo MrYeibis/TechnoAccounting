@@ -76,6 +76,7 @@ export class DashboardComponent implements OnInit {
       for(let item of this.data){
         if(this.email == ''){
           this.crud.idDelete = item.id.id;
+          console.log('ID Delete:' + this.crud.idDelete)
           this.email = item.email
           this.name = item.name;
           this.surname = item.surname;
@@ -90,13 +91,6 @@ export class DashboardComponent implements OnInit {
       }
     }) 
 
-    this.crud.getBusinessMoney$().subscribe( businessMoneyService => {
-      this.data = businessMoneyService;
-      for(let item of this.data){
-        this.businessMoney = item.businessMoney;
-      }
-    }) 
-
     this.auth.newProfileImage$().subscribe( profileImage => {
       this.profileImage = profileImage;
       for(let item of this.data){
@@ -105,7 +99,6 @@ export class DashboardComponent implements OnInit {
     }) 
 
     this.crud.getData('email', String(getAuth().currentUser?.email), '/users')
-    setTimeout(() => {this.crud.getBusinessMoney('/business/' + this.crud.codeE);}, 100) 
   }
 
   ngAfterViewInit() {
@@ -121,9 +114,15 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(){
-    getAuth().signOut();
-    this.router.navigate(['/landing']);
-    this.notifications.success('Cerrado De Sesión Exitoso');
+    this.auth.logout().pipe(
+      this.notifications.observe({
+        success: 'Sesión Finalizada Exitosamente',
+        loading: 'Cerrando Sesión',
+        error: 'Ha occurido un error'
+      })
+    ).subscribe(() => {
+      this.router.navigate(['/landing'])
+    });
   }
 
   changeRank(){

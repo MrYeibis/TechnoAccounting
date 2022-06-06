@@ -16,6 +16,8 @@ export class ComprasComponent implements OnInit {
 
   public employee: string = "";
 
+  public dataHere: boolean = false;
+
   new = new FormGroup({
     billNumber: new FormControl(0, [Validators.required]),
     productName: new FormControl('', [Validators.required]),
@@ -35,7 +37,7 @@ export class ComprasComponent implements OnInit {
   ngOnInit(): void {
     this.crud.getData$().subscribe( serviceData => {
       this.data = serviceData;
-      console.log(this.data);
+      this.dataHere = true;
     })
     this.getData();
     this.employee = this.crud.employee;

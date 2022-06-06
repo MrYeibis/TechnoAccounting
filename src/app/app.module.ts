@@ -17,8 +17,6 @@ import { NgSelect2Module } from 'ng-select2';
 import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './landing/navbar/navbar.component';
 import { MainComponent } from './landing/main/main.component';
-import { FooterComponent } from './landing/footer/footer.component';
-import { SecondaryComponent } from './landing/secondary/secondary.component';
 import { LoginComponent } from './login/login.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { FormsModule } from '@angular/forms';
@@ -51,8 +49,6 @@ import { InformesComponent } from './page/dashboard/content/contaduria/informes/
     LandingComponent,
     NavbarComponent,
     MainComponent,
-    FooterComponent,
-    SecondaryComponent,
     LoginComponent,
     RegisterComponent,
     AdminComponent,
