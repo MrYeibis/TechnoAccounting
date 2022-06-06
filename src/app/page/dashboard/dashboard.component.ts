@@ -125,6 +125,22 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  getDataSale(){
+    if(this.crud.rank == "Administrador"){
+      this.crud.getAllData('/business/' + this.crud.codeE + '/sells');
+    } else {
+      this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/sells');
+    }
+  }
+
+  getDataBuys(){
+    if(this.crud.rank == "Administrador"){
+      this.crud.getAllData('/business/' + this.crud.codeE + '/buys');
+    } else {
+      this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/buys');
+    }
+  }
+
   changeRank(){
     this.crud.updateData(this.crud.idUser, this.editarFormUser.value, '/users');
     this.crud.getData('codeE', this.crud.codeE, '/users' );
@@ -132,12 +148,12 @@ export class DashboardComponent implements OnInit {
 
   changeSale(){
     this.crud.updateData(this.crud.id, this.editarFormVentas.value, '/business/' + this.crud.codeE + '/sells');
-    setTimeout(() => {this.crud.getData('seller', this.crud.employee, '/business/' + this.crud.codeE + '/sells');}, 200)
+    setTimeout(() => {this.getDataSale();}, 200)
   }
 
   changeBuy(){
     this.crud.updateData(this.crud.id, this.editarFormCompras.value, '/business/' + this.crud.codeE + '/buys');
-    setTimeout(() => {this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/buys');}, 200)
+    setTimeout(() => {this.getDataBuys();}, 200)
   }
 
   confirmationDelete() {

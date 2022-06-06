@@ -53,13 +53,13 @@ export class ComprasComponent implements OnInit {
 
   addBuy(){
     this.crud.addData(this.new.value, '/business/' + this.crud.codeE + '/buys')
-    setTimeout(() => {this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/buys');}, 200);
+    setTimeout(() => {this.getData();}, 200);
   }
 
   deleteBuy(id:string) {
     console.log(id)
     this.crud.deleteData(id, '/business/' + this.crud.codeE + '/buys');
-    setTimeout(() => {this.crud.getData('buyer', this.crud.employee, '/business/' + this.crud.codeE + '/buys');}, 200);
+    setTimeout(() => {this.getData();}, 200);
   }
 
   select(id: string, productName: string, amount: number, unitPrice: number, totalPrice: number, provider:string) {

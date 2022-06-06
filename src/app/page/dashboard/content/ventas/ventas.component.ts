@@ -51,13 +51,13 @@ export class VentasComponent implements OnInit {
 
   addSell(){
     this.crud.addData(this.new.value, '/business/' + this.crud.codeE + '/sells')
-    setTimeout(() => {this.crud.getData('seller', this.crud.employee, '/business/' + this.crud.codeE + '/sells');}, 200);
+    setTimeout(() => {this.getData();}, 200);
   }
 
   deleteSell(id:string) {
     console.log(id)
     this.crud.deleteData(id, '/business/' + this.crud.codeE + '/sells');
-    setTimeout(() => {this.crud.getData('seller', this.crud.employee, '/business/' + this.crud.codeE + '/sells');}, 200);
+    setTimeout(() => {this.getData();}, 200);
   }
 
   select(id: string, productName: string, amount: number, unitPrice: number, totalPrice: number) {

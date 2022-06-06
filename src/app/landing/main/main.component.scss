@@ -8,8 +8,8 @@
 }
 
 .col-md-6{
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 30px;
+    padding: 60px;
 }
 
 .title-text{
@@ -21,7 +21,7 @@
 
 hr{
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     margin-left: 10px;
     height: 6px;
     width: 70%;
@@ -39,7 +39,7 @@ hr{
 .main{
     height:100vh;
     width:100%;
-    background: linear-gradient(-45deg, #7f51ff, #ca71da, #f091ff, #bd19f9);
+    background: linear-gradient(-45deg, #7f51ff, #8671be, #423567, #9670fe);
 	background-size: 400% 400%;
     -webkit-animation: gradient 4s ease infinite;
     -moz-animation: gradient 4s ease infinite;
@@ -65,7 +65,7 @@ hr{
 .img-main{
     margin-top: 12%;
     margin-left: 25%; 
-    height: 72%; 
+    height: auto; 
     width: 72%;
 }
 

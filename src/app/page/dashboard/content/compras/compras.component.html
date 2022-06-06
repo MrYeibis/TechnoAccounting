@@ -40,7 +40,7 @@
                                   <input type="number" class="form-control btn-borders" [ngModel]="amount*unitPrice" placeholder="Se calcula automaticamente" formControlName="totalPrice" readonly>
                                 </div>
                             </div>
-                            <button class="btn btn-borders" style="width: 100%; margin-top: 20px; margin-bottom: 20px; background-color: rgb(127, 81, 255); color: white;" (click)="addBuy()">Agregar</button>
+                            <button class="btn btn-borders" style="width: 100%; margin-top: 20px; margin-bottom: 20px; background-color: rgb(127, 81, 255); color: white;" [disabled]="!this.new.valid" (click)="addBuy()">Agregar</button>
                         </form>
                     </div>
                   </div>

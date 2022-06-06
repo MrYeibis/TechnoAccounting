@@ -80,7 +80,7 @@ export class InformesComponent implements OnInit {
         this.new.controls['urlFile'].setValue(urlFile);
         this.new.controls['uploadedDate'].setValue(date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear());
         this.crud.addData(this.new.value, '/business/' + this.crud.codeE + '/reports');
-        setTimeout(()=>{this.crud.getData('accountant', this.crud.employee, '/business/' + this.crud.codeE + '/reports')}, 200)
+        setTimeout(() => {this.getData();}, 200);
       }).catch((err) => {
         this.notifications.error('Error en el registro');
       });
@@ -121,8 +121,7 @@ export class InformesComponent implements OnInit {
       }
       this.dataExcel = finalData;},1500)
     setTimeout(()=>{
-      const date = new Date();
-      this.exportToExcel(this.dataExcel, 'Reporte de Compras Generado En La Fecha ' + date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear());
+      this.exportToExcel(this.dataExcel, 'Reporte de Compras Generado En La Fecha ' + Date());
     },2000);
   }
 
@@ -143,7 +142,7 @@ export class InformesComponent implements OnInit {
       this.dataExcel = finalData;},1500)
     setTimeout(()=>{
       const date = new Date();
-      this.exportToExcel(this.dataExcel, 'Reporte de Ventas Generado En La Fecha ' + date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear());
+      this.exportToExcel(this.dataExcel, 'Reporte de Ventas Generado En La Fecha ' + Date());
     },2000);
   }
 
