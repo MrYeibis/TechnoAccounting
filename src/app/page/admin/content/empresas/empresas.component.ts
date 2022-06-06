@@ -47,13 +47,13 @@ export class EmpresasComponent implements OnInit {
 
   addBusiness() {
     this.crud.addData(this.new.value, '/business');
-    this.crud.getAllData('business');
+    setTimeout(()=>{this.crud.getAllData('business');}, 500)
     this.new.controls['name'].setValue('');
   }
 
   deleteBusiness(id:string) {
     this.crud.deleteData(id, '/business');
-    this.crud.getAllData('business');
+    setTimeout(()=>{this.crud.getAllData('business');}, 500) 
   }
 
   select(id: string, name: string){
@@ -63,7 +63,7 @@ export class EmpresasComponent implements OnInit {
 
   editar(id: string){
     this.crud.updateData(id, this.editarForm.value, '/business');
-    this.crud.getAllData('business');
+    setTimeout(()=>{this.crud.getAllData('business');}, 500)
   }
 
   selectAdmin(){
