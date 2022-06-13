@@ -22,7 +22,7 @@
                         <div class="mb-3">
                           <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                           <input type="password" class="form-control text-space" id="exampleInputPassword1" formControlName="password">
-                          <a class="modalLink" data-bs-toggle="modal" data-bs-target="#recuperarModal">¿Olvidaste tu contraseña?</a>
+                          <a class="modalLink" data-bs-toggle="modal" data-bs-target="#emailModal">¿Olvidaste tu contraseña?</a>
                         </div>  
                         <p class="text-cemter">
                           <button type="submit" class="btn btn-login w-100 btn-borders py-2" (click)="login()" [disabled]="!this.LoginForm.valid">Iniciar</button>
@@ -40,7 +40,29 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Continue -->
+<div class="modal fade " id="emailModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Recuperar Contraseña </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="emailForm" class="form-register">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label mt-2">Correo Electronico:</label>
+            <input type="email" class="form-control text-space" id="exampleInputEmail1" formControlName="email">
+          </div>
+          <button type="submit" class="btn btn-login w-100 btn-borders" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#recuperarModal" [disabled]="!this.emailForm.valid" (click)="openPopup()">Siguiente</button>
+          <button class="btn btn-volver w-100 btn-borders" data-bs-dismiss="modal">Volver</button> 
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Continue -->
 <div class="modal fade " id="recuperarModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -51,10 +73,11 @@
       <div class="modal-body">
         <form [formGroup]="RecoveryForm" class="form-register">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
-            <input type="email" class="form-control text-space" id="exampleInputEmail1" formControlName="email">
+            <input type="email" class="form-control text-space" id="exampleInputEmail1"[ngModel]="this.authService.documentRecoverCensored" formControlName="correctDocument" readonly>
+            <label for="exampleInputEmail1" class="form-label mt-2">Documento Completo:</label>
+            <input type="email" class="form-control text-space" id="exampleInputEmail1" formControlName="document" >
           </div>
-          <button type="submit" class="btn btn-login w-100 btn-borders" data-bs-dismiss="modal" (click)="reset()" [disabled]="!this.RecoveryForm.valid">Recuperar Contraseña</button>
+          <button type="submit" class="btn btn-login w-100 btn-borders" data-bs-dismiss="modal" (click)="reset()" [disabled]="!this.correctEmail()">Recuperar Contraseña</button>
           <button class="btn btn-volver w-100 btn-borders" data-bs-dismiss="modal">Volver</button> 
       </form>
       </div>

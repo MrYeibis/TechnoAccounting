@@ -19,6 +19,10 @@ export class AuthService {
   profileImage:any = "";
   profileImage$: Subject<any>
 
+  public emailRecover:string = "";
+  public documentRecover:string = "1";
+  public documentRecoverCensored:string = "";
+
   constructor(private auth: Auth, private router: Router, private crud: DbCrudService) {
     this.profileImage = "";
     this.profileImage$ = new Subject();

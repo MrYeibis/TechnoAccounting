@@ -20,15 +20,28 @@ export class LoginComponent implements OnInit {
   })
 
   RecoveryForm = new FormGroup({
+    document: new FormControl(''),
+    correctDocument: new FormControl(''),
+  })
+
+  emailForm = new FormGroup({
     email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
   })
 
   public popup: boolean = false;
+  public data: any = ['EMPTY'];
 
-  constructor(private authService: AuthService, private notifications: HotToastService, private router: Router,
-    private crud: DbCrudService, private auth: Auth) { }
+  constructor(public authService: AuthService, private notifications: HotToastService, private router: Router, private auth: Auth,
+    private crud: DbCrudService) { }
 
   ngOnInit(): void {
+    this.crud.getData$().subscribe( serviceData => {
+      this.data = serviceData;
+      for(let item of this.data){
+        this.authService.documentRecover = item.numDocu
+        this.authService.documentRecoverCensored = this.censorWord(this.authService.documentRecover)
+      }
+    })
   }
 
   
@@ -55,10 +68,32 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  reset(){
-    const email = this.RecoveryForm.controls['email'].value
-    this.authService.resetPassword(email);
-    this.notifications.success('Si el correo es correcto, se envío un link de recuperación');
+  censorWord(str: string){
+    return str[0] + "*".repeat(str.length - 1) + str.slice(-3);
   }
 
+  openPopup(){
+    this.authService.emailRecover = this.emailForm.controls['email'].value
+    this.crud.getData('email', this.emailForm.controls['email'].value, '/users')
+    setTimeout(() => {
+      if(this.authService.documentRecover == "1"){
+      this.notifications.error('El correo digitado no es correcto');
+      setTimeout(() => {location.reload()}, 1500)
+    }
+  }, 2000)
+  }
+
+  reset(){
+    const email = this.authService.emailRecover;
+    this.authService.resetPassword(email);
+    this.notifications.success('Se envío un link de recuperación');
+  }
+
+  correctEmail(){
+    if(this.RecoveryForm.controls['document'].value == this.authService.documentRecover){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
